@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bh41eubssjdo1"]
 
 [ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="2_wwpf4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(1000, 40)
@@ -30,7 +31,7 @@ color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
 position = Vector2(650, 350)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1996096873]
-position = Vector2(-20, -150)
+position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_jwv3a")
 
 [node name="ColorRect" type="ColorRect" parent="Wall" unique_id=1070247468]
@@ -39,3 +40,5 @@ offset_top = -150.0
 offset_right = 20.0
 offset_bottom = 150.0
 color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
+[node name="Spike" parent="." unique_id=1282762288 instance=ExtResource("2_wwpf4")]
+position = Vector2(622, 470)
