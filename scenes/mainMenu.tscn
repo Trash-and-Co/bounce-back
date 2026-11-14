@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://b5enshmjekrmf"]
 
 [node name="MainMenu" type="Node2D" unique_id=1982290728]
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=1309581643]
+offset_left = 410.0
+offset_top = 202.0
+offset_right = 824.0
+offset_bottom = 342.0
+text = "hello from main menu!"
