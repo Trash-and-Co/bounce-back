@@ -19,6 +19,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 
 	var occupied: int = int(level.get_meta("occupied_spikes", 0))
+	
 
 	if occupied >= MAX_OCCUPIED_SPIKES:
 		level.set_meta("restart_pending", true)
@@ -26,6 +27,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 
 	level.set_meta("occupied_spikes", occupied + 1)
+	get_tree().call_group("life_counter", "update_lives", occupied + 1)
 	converted = true
 	$Area2D.set_deferred("monitoring", false)
 	_create_safe_spot.call_deferred(body)
