@@ -13,6 +13,7 @@ var detach_pending: bool = false
 
 
 func _ready() -> void:
+	add_to_group("player")
 	sprite.play("idle")
 
 
