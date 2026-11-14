@@ -1,10 +1,199 @@
 [gd_scene format=3 uid="uid://b5enshmjekrmf"]
 
-[node name="MainMenu" type="Node2D" unique_id=1982290728]
+[ext_resource type="Texture2D" uid="uid://bi0me184esy0w" path="res://assets/SlimePlatformerAssets/Backgrounds/Bg2.png" id="1_3d1i7"]
+[ext_resource type="Shader" uid="uid://cgscyo4eekymq" path="res://scenes/mainMenu.gdshader" id="1_l7wge"]
+[ext_resource type="AudioStream" uid="uid://ds3ldtbmo1t8g" path="res://assets/sounds/music/haven_mainmenu.ogg" id="2_48ign"]
+[ext_resource type="FontFile" uid="uid://4fox4h7hggqn" path="res://assets/fonts/Pixel Intv.otf" id="2_l7wge"]
 
-[node name="TextEdit" type="TextEdit" parent="." unique_id=1309581643]
-offset_left = 410.0
-offset_top = 202.0
-offset_right = 824.0
-offset_bottom = 342.0
-text = "hello from main menu!"
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l7wge"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l7wge"]
+noise = SubResource("FastNoiseLite_l7wge")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48ign"]
+shader = ExtResource("1_l7wge")
+shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_l7wge")
+shader_parameter/strength = 2.80000004172336
+shader_parameter/uv_scaling = 1.0
+shader_parameter/movement_direction = Vector2(1, 0)
+shader_parameter/movement_speed = 0.0999999977648
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48ign"]
+bg_color = Color(0.95600003, 1, 0.92, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.21568628)
+shadow_size = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7wge"]
+bg_color = Color(0.95600003, 1, 0.92, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.21568628)
+shadow_size = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nrmo"]
+bg_color = Color(0.8536291, 0.99999994, 0.72274446, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.21568628)
+shadow_size = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clbkb"]
+bg_color = Color(0.8420372, 0.9999998, 0.6947712, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.21568628)
+shadow_size = 4
+anti_aliasing = false
+
+[node name="Control" type="Control" unique_id=237651559]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1081389048]
+texture_filter = 1
+material = SubResource("ShaderMaterial_48ign")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3d1i7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1738372217]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.73602
+offset_top = -60.25
+offset_right = 191.73602
+offset_bottom = 246.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=2146735561]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0013465314, 0.166145, 0, 0.32156864)
+theme_override_constants/outline_size = 4
+theme_override_constants/icon_max_width = 0
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("2_l7wge")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_48ign")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l7wge")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7nrmo")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_clbkb")
+text = "Start Game"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1113155038]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0013465314, 0.166145, 0, 0.32156864)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_l7wge")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_48ign")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l7wge")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7nrmo")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_clbkb")
+text = "Options"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=659189825]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0013465314, 0.166145, 0, 0.32156864)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_l7wge")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_48ign")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l7wge")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7nrmo")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_clbkb")
+text = "Quit Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=409874002]
+stream = ExtResource("2_48ign")
+volume_db = -12.0
+autoplay = true
+parameters/looping = true
+
+[node name="Label" type="Label" parent="." unique_id=1532111548]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 69.0
+offset_right = 920.0
+offset_bottom = 178.0
+theme_override_colors/font_color = Color(0.88, 1, 0.912, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.40784314)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_l7wge")
+theme_override_font_sizes/font_size = 92
+text = "Bounce Back"

@@ -31,7 +31,6 @@ color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
 position = Vector2(650, 350)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1996096873]
-position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_jwv3a")
 
 [node name="ColorRect" type="ColorRect" parent="Wall" unique_id=1070247468]
@@ -40,5 +39,6 @@ offset_top = -150.0
 offset_right = 20.0
 offset_bottom = 150.0
 color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
+
 [node name="Spike" parent="." unique_id=1282762288 instance=ExtResource("2_wwpf4")]
 position = Vector2(622, 470)
