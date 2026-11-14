@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bh41eubssjdo1"]
+
+[ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="1_rxlsh"]
+[ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="2_b1ktf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
+size = Vector2(1000, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwv3a"]
+size = Vector2(40, 300)
+
+[node name="main" type="Node2D" unique_id=599523800]
+
+[node name="Player" parent="." unique_id=2115439458 instance=ExtResource("1_rxlsh")]
+position = Vector2(200, 200)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1727189459]
+position = Vector2(500, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1151410034]
+shape = SubResource("RectangleShape2D_rkbax")
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=554687184]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=358026086]
+position = Vector2(650, 350)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1996096873]
+shape = SubResource("RectangleShape2D_jwv3a")
+
+[node name="ColorRect" type="ColorRect" parent="Wall" unique_id=1070247468]
+offset_left = -20.0
+offset_top = -150.0
+offset_right = 20.0
+offset_bottom = 150.0
+color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
+
+<<<<<<< HEAD:scenes/voitkevicstestlevel.tscn
+[node name="Spike" parent="." unique_id=1282762288 instance=ExtResource("2_b1ktf")]
+=======
+[node name="Spike" parent="." unique_id=1282762288 instance=ExtResource("2_wwpf4")]
+>>>>>>> origin/lacis:scenes/level1.tscn
+position = Vector2(622, 470)
