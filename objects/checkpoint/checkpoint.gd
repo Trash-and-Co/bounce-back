@@ -19,3 +19,4 @@ func toCheckpoint(player: CharacterBody2D) -> void:
 		sprite.play("idle")
 
 	player.queue_redraw()
+	player.set("death_in_progress", false)
