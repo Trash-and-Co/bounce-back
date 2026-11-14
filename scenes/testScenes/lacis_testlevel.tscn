@@ -2,26 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="1_fll2l"]
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="2_ujw72"]
-[ext_resource type="Texture2D" uid="uid://cd0baiwk4fnq0" path="res://assets/spritesheet/spritesheet.png" id="3_eyqsw"]
-[ext_resource type="AudioStream" uid="uid://ctdgen8s4mieb" path="res://assets/sounds/Blip_select 59.wav" id="4_fibik"]
-[ext_resource type="Script" uid="uid://cumcnmhss6ywd" path="res://scenes/testScenes/playsfx.gd" id="5_vslsn"]
+[ext_resource type="PackedScene" uid="uid://cgomkkkcqaqpk" path="res://objects/toggleSwitch/toggleSwitch.tscn" id="3_eyqsw"]
+[ext_resource type="TileSet" uid="uid://j66fp0lh4fda" path="res://assets/tilesets/tile_set.tres" id="4_xywpq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(1000, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwv3a"]
 size = Vector2(40, 300)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pnug"]
-atlas = ExtResource("3_eyqsw")
-region = Rect2(240, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xywpq"]
-atlas = ExtResource("3_eyqsw")
-region = Rect2(256, 48, 16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fibik"]
-size = Vector2(45, 34)
 
 [node name="main" type="Node2D" unique_id=599523800]
 
@@ -57,27 +45,9 @@ color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
 [node name="Spike" parent="." unique_id=1282762288 instance=ExtResource("2_ujw72")]
 position = Vector2(622, 470)
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=64974600 node_paths=PackedStringArray("target_label")]
-texture_filter = 1
-offset_left = 448.0
-offset_top = 440.0
-offset_right = 508.0
-offset_bottom = 500.0
-toggle_mode = true
-texture_normal = SubResource("AtlasTexture_2pnug")
-texture_pressed = SubResource("AtlasTexture_xywpq")
-stretch_mode = 0
-script = ExtResource("5_vslsn")
+[node name="TextureButton" parent="." unique_id=100113984 node_paths=PackedStringArray("target_label", "platform_layer") instance=ExtResource("3_eyqsw")]
 target_label = NodePath("../Label")
-
-[node name="ToggleSound" type="AudioStreamPlayer" parent="TextureButton" unique_id=1560864277]
-stream = ExtResource("4_fibik")
-
-[node name="TouchArea" type="Area2D" parent="TextureButton" unique_id=743046545]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureButton/TouchArea" unique_id=506615476]
-position = Vector2(30.5, 43)
-shape = SubResource("RectangleShape2D_fibik")
+platform_layer = NodePath("../TileMapLayer")
 
 [node name="Label" type="Label" parent="." unique_id=350839693]
 offset_left = 54.0
@@ -88,3 +58,7 @@ theme_override_font_sizes/font_size = 48
 text = "hello"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1974015376]
+tile_map_data = PackedByteArray(0, 0, 5, 0, 4, 0, 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 4, 0, 0, 0, 10, 0, 3, 0, 0, 0, 7, 0, 4, 0, 0, 0, 11, 0, 3, 0, 0, 0)
+tile_set = ExtResource("4_xywpq")
