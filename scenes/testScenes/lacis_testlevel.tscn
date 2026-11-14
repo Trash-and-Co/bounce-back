@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://c62pycts2ho8i"]
+
+[ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="1_fll2l"]
+[ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="2_ujw72"]
+[ext_resource type="Texture2D" uid="uid://cd0baiwk4fnq0" path="res://assets/spritesheet/spritesheet.png" id="3_eyqsw"]
+[ext_resource type="AudioStream" uid="uid://ctdgen8s4mieb" path="res://assets/sounds/Blip_select 59.wav" id="4_fibik"]
+[ext_resource type="Script" uid="uid://cumcnmhss6ywd" path="res://scenes/testScenes/playsfx.gd" id="5_vslsn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
+size = Vector2(1000, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwv3a"]
+size = Vector2(40, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pnug"]
+atlas = ExtResource("3_eyqsw")
+region = Rect2(240, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xywpq"]
+atlas = ExtResource("3_eyqsw")
+region = Rect2(256, 48, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fibik"]
+size = Vector2(45, 34)
+
+[node name="main" type="Node2D" unique_id=599523800]
+
+[node name="Player" parent="." unique_id=2115439458 instance=ExtResource("1_fll2l")]
+position = Vector2(200, 200)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1727189459]
+position = Vector2(500, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1151410034]
+shape = SubResource("RectangleShape2D_rkbax")
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=554687184]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=358026086]
+position = Vector2(650, 350)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1996096873]
+shape = SubResource("RectangleShape2D_jwv3a")
+
+[node name="ColorRect" type="ColorRect" parent="Wall" unique_id=1070247468]
+offset_left = -20.0
+offset_top = -150.0
+offset_right = 20.0
+offset_bottom = 150.0
+color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
+
+[node name="Spike" parent="." unique_id=1282762288 instance=ExtResource("2_ujw72")]
+position = Vector2(622, 470)
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=64974600 node_paths=PackedStringArray("target_label")]
+texture_filter = 1
+offset_left = 448.0
+offset_top = 440.0
+offset_right = 508.0
+offset_bottom = 500.0
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_2pnug")
+texture_pressed = SubResource("AtlasTexture_xywpq")
+stretch_mode = 0
+script = ExtResource("5_vslsn")
+target_label = NodePath("../Label")
+
+[node name="ToggleSound" type="AudioStreamPlayer" parent="TextureButton" unique_id=1560864277]
+stream = ExtResource("4_fibik")
+
+[node name="TouchArea" type="Area2D" parent="TextureButton" unique_id=743046545]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureButton/TouchArea" unique_id=506615476]
+position = Vector2(30.5, 43)
+shape = SubResource("RectangleShape2D_fibik")
+
+[node name="Label" type="Label" parent="." unique_id=350839693]
+offset_left = 54.0
+offset_top = 241.0
+offset_right = 280.0
+offset_bottom = 365.0
+theme_override_font_sizes/font_size = 48
+text = "hello"
+horizontal_alignment = 1
+vertical_alignment = 1
