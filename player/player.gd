@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var attached: bool = false
+var death_in_progress: bool = false
 var dragging: bool = false
 var drag_start: Vector2 = Vector2.ZERO
 var surface_normal: Vector2 = Vector2.UP
@@ -74,3 +75,12 @@ func _draw() -> void:
 		pull = pull.limit_length(max_drag)
 		draw_line(Vector2.ZERO, pull, Color.YELLOW, 3.0)
 		draw_circle(pull, 5.0, Color.YELLOW)
+		
+func claim_death() -> bool:
+	if death_in_progress:
+		return false
+
+	death_in_progress = true
+	dragging = false
+	queue_redraw()
+	return true
