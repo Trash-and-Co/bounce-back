@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dc5w5nvp1r8mx"]
 
-[ext_resource type="Texture2D" uid="uid://bni7ped5dtii" path="res://icon.svg" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://wafufsn5kn1j" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://d0opn5b84nxqu" path="res://player/player.gd" id="1_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgfsc"]
 size = Vector2(60, 60)
 
-[node name="Player" type="CharacterBody2D" unique_id=2115439458]
+[node name="Player" type="CharacterBody2D" unique_id=2115439458 groups=["player"]]
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=916033475]

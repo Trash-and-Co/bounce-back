@@ -1,3 +1,32 @@
 [gd_scene format=3 uid="uid://cba3rmlui2euj"]
 
+[ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="1_wbi0e"]
+[ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="2_ueh0w"]
+[ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="3_ueh0w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ueh0w"]
+size = Vector2(1000, 40)
+
 [node name="SamietisTest" type="Node2D" unique_id=1013809987]
+
+[node name="Player" parent="." unique_id=2115439458 instance=ExtResource("1_wbi0e")]
+position = Vector2(221, 510)
+
+[node name="Spike" parent="." unique_id=1282762288 instance=ExtResource("2_ueh0w")]
+position = Vector2(717, 521)
+
+[node name="Checkpoint" parent="." unique_id=2017083346 groups=["player"] instance=ExtResource("3_ueh0w")]
+position = Vector2(117, 503)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=367011498]
+position = Vector2(496, 564)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1198941329]
+shape = SubResource("RectangleShape2D_ueh0w")
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=966079525]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
