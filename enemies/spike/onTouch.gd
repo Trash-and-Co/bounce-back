@@ -1,6 +1,10 @@
 extends Node2D
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	#INFO: what happens when the player touches the spike
-	pass
-	
+	if body.is_in_group("player"):
+		get_tree().call_group_flags(
+			SceneTree.GROUP_CALL_DEFERRED,
+			"stage_checkpoint",
+			"toCheckpoint",
+			body
+		)

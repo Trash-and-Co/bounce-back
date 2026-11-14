@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cuhxkjcj3memu"]
+
+[ext_resource type="Script" uid="uid://dnb3kpxch8j8e" path="res://objects/checkpoint/checkpoint.gd" id="1_aaksu"]
+
+[node name="Checkpoint" type="Node2D" unique_id=2017083346 groups=["stage_checkpoint"]]
+script = ExtResource("1_aaksu")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1700224750]
