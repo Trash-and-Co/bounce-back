@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @export var launch_power: float = 6.0
 @export var max_drag: float = 120.0
-@export var ground_friction: float = 1800.0
 
+var attached: bool = false
 var dragging: bool = false
 var drag_start: Vector2 = Vector2.ZERO
 
@@ -16,29 +16,30 @@ func _input(event: InputEvent) -> void:
 		if event.pressed:
 			var mouse := get_global_mouse_position()
 
-			if is_on_floor() and mouse.distance_to(global_position) <= 40.0:
+			if attached and mouse.distance_to(global_position) <= 40.0:
 				dragging = true
 				drag_start = mouse
-				velocity = Vector2.ZERO
 
 		elif dragging:
 			dragging = false
 			var pull := drag_start - get_global_mouse_position()
-			velocity = pull.limit_length(max_drag) * launch_power
+			pull = pull.limit_length(max_drag)
+
+			if pull.length() >= 8.0:
+				velocity = pull * launch_power
+				attached = false
 
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
+	if not attached:
 		velocity += get_gravity() * delta
 
-	if is_on_floor() and velocity.y >= 0.0:
-		velocity.x = move_toward(
-			velocity.x,
-			0.0,
-			ground_friction * delta
-		)
+		var collision := move_and_collide(velocity * delta)
 
-	move_and_slide()
+		if collision:
+			velocity = Vector2.ZERO
+			attached = true
+
 	queue_redraw()
 
 
