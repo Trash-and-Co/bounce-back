@@ -27,6 +27,10 @@ func _input(event: InputEvent) -> void:
 
 			if pull.length() >= 8.0:
 				velocity = pull * launch_power
+
+				if velocity.x != 0.0:
+					$AnimatedSprite2D.flip_h = velocity.x < 0.0
+
 				attached = false
 
 
@@ -49,3 +53,6 @@ func _draw() -> void:
 		pull = pull.limit_length(max_drag)
 		draw_line(Vector2.ZERO, pull, Color.YELLOW, 3.0)
 		draw_circle(pull, 5.0, Color.YELLOW)
+		
+func _ready() -> void:
+	$AnimatedSprite2D.play("idle")
