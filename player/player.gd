@@ -10,13 +10,17 @@ const DOT_SPACING: float = 12.0
 const CLICK_PREVIEW_DOTS: int = 3
 const DRAG_PREVIEW_DOTS: int = 8
 const WALL_CONTACT_DISTANCE: float = 3.0
+const CEILING_STRETCH: float = 1.38
+const IDLE_BASE_OFFSET: float = 7.0
 
 @export var launch_power: float = 6.0
 @export var max_drag: float = 120.0
 @export var wall_slide_speed: float = 38.0
+@export_range(0.1, 5.0, 0.1) var ceiling_hang_time: float = 2.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sprite_rest_y: float = sprite.position.y
+@onready var sprite_rest_scale: Vector2 = sprite.scale
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 var attached: bool = false
@@ -26,6 +30,7 @@ var drag_start: Vector2 = Vector2.ZERO
 var pullback_started: bool = false
 var surface_normal: Vector2 = Vector2.UP
 var detach_pending: bool = false
+var ceiling_elapsed: float = 0.0
 
 var trajectory := PackedVector2Array()
 var trajectory_overlay := Node2D.new()
@@ -75,6 +80,7 @@ func _input(event: InputEvent) -> void:
 	attached = false
 	detach_pending = true
 	sprite.play("idle")
+	_update_sprite_pose()
 
 	if velocity.x != 0.0:
 		sprite.flip_h = velocity.x < 0.0
@@ -102,19 +108,18 @@ func _physics_process(delta: float) -> void:
 		detach_pending = false
 
 	if attached:
-		if _is_wall(surface_normal) and not death_in_progress:
-			_slide_down_wall(delta)
+		if not death_in_progress:
+			if _is_wall(surface_normal):
+				_slide_down_wall(delta)
+			elif _is_ceiling(surface_normal):
+				_hang_from_ceiling(delta)
 	else:
 		velocity += get_gravity() * delta
 		var collision := move_and_collide(velocity * delta)
 		if collision:
 			_attach_to_surface(collision.get_normal())
 
-	var on_ceiling := attached and surface_normal.y > 0.7 and not _is_wall(surface_normal)
-	sprite.flip_v = on_ceiling
-
-	var ceiling_y := 2.0 * collision_shape.position.y - sprite_rest_y
-	sprite.position.y = ceiling_y if on_ceiling else sprite_rest_y
+	_update_sprite_pose()
 
 	if dragging:
 		var mouse := get_global_mouse_position()
@@ -129,16 +134,47 @@ func _is_wall(normal: Vector2) -> bool:
 	return absf(normal.x) > 0.7
 
 
+func _is_ceiling(normal: Vector2) -> bool:
+	return normal.y > 0.7 and not _is_wall(normal)
+
+
 func _attach_to_surface(normal: Vector2) -> void:
 	velocity = Vector2.ZERO
 	attached = true
 	surface_normal = normal
+	ceiling_elapsed = 0.0
 
 	if _is_wall(normal):
 		sprite.play("wall_stick")
 		sprite.flip_h = normal.x < 0.0
 	else:
 		sprite.play("idle")
+
+
+func _hang_from_ceiling(delta: float) -> void:
+	ceiling_elapsed += delta
+	if ceiling_elapsed >= ceiling_hang_time:
+		attached = false
+		dragging = false
+		velocity = Vector2.ZERO
+
+
+func _update_sprite_pose() -> void:
+	var on_ceiling := attached and _is_ceiling(surface_normal)
+	sprite.flip_v = on_ceiling
+	if not on_ceiling:
+		sprite.scale = sprite_rest_scale
+		sprite.position.y = sprite_rest_y
+		return
+
+	var progress := smoothstep(0.0, ceiling_hang_time, ceiling_elapsed)
+	var ceiling_y := 2.0 * collision_shape.position.y - sprite_rest_y
+	sprite.scale = sprite_rest_scale * Vector2(
+		lerpf(1.0, 0.92, progress),
+		lerpf(1.0, CEILING_STRETCH, progress)
+	)
+	# Keep the flat edge of the idle sprite anchored while it stretches down.
+	sprite.position.y = ceiling_y + IDLE_BASE_OFFSET * (sprite.scale.y - sprite_rest_scale.y)
 
 
 func _slide_down_wall(delta: float) -> void:
