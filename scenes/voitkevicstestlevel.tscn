@@ -40,5 +40,9 @@ offset_right = 20.0
 offset_bottom = 150.0
 color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
 
+<<<<<<< HEAD:scenes/voitkevicstestlevel.tscn
 [node name="Spike" parent="." unique_id=1282762288 instance=ExtResource("2_b1ktf")]
+=======
+[node name="Spike" parent="." unique_id=1282762288 instance=ExtResource("2_wwpf4")]
+>>>>>>> origin/lacis:scenes/level1.tscn
 position = Vector2(622, 470)
