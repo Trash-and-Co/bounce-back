@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6wnpwy0ivoei"
-path="res://.godot/imported/13.png-6a2f9bec007c2d31c829792aaf7790a6.ctex"
+uid="uid://ca01o7kln5h71"
+path="res://.godot/imported/sign with no pole.png-c1f1bf851e017cf1f0e87cde7563b29c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/13.png"
-dest_files=["res://.godot/imported/13.png-6a2f9bec007c2d31c829792aaf7790a6.ctex"]
+source_file="res://assets/signs/sign with no pole.png"
+dest_files=["res://.godot/imported/sign with no pole.png-c1f1bf851e017cf1f0e87cde7563b29c.ctex"]
 
 [params]
 

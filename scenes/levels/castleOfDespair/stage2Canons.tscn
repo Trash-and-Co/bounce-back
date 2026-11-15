@@ -7,10 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="5_rsxnl"]
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="6_0xryg"]
 [ext_resource type="PackedScene" uid="uid://dl7kqpfvinyc8" path="res://enemies/cannon/cannon.tscn" id="6_tv1up"]
+[ext_resource type="Texture2D" uid="uid://ccx6lfnyaav1d" path="res://assets/items/00.png" id="8_du66a"]
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="8_eecmt"]
 [ext_resource type="PackedScene" uid="uid://cgomkkkcqaqpk" path="res://objects/toggleSwitch/toggleSwitch.tscn" id="9_du66a"]
+[ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="9_t5uru"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="10_t5uru"]
 [ext_resource type="AudioStream" uid="uid://bvs28kfuht74m" path="res://assets/sounds/music/haven_bg2.ogg" id="11_6q7i5"]
+
+[ext_resource type="PackedScene" uid="uid://ceyvhru8us3lt" path="res://objects/textSign/textSign.tscn" id="13_sdfs7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6q7i5"]
+radius = 12.0
 
 [node name="Stage2Spike2" type="Node2D" unique_id=965111673]
 
@@ -19,7 +26,7 @@ tile_map_data = PackedByteArray("AAALAAkAAAAFAAAAAAALAAgAAAACAAAAAAAKAAkAAAAEAAA
 tile_set = ExtResource("1_67ug3")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_yxg7v")]
-position = Vector2(564, 480)
+position = Vector2(563, 332)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
 position = Vector2(3.6672363, 0)
@@ -129,11 +136,28 @@ position = Vector2(4230, 1966)
 position = Vector2(1267, 843)
 scale = Vector2(82.01241, 3.722608)
 
+[node name="Key" type="Sprite2D" parent="." unique_id=1466431997]
+texture_filter = 1
+position = Vector2(5085.0005, 1902.9999)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("8_du66a")
+script = ExtResource("9_t5uru")
+next_scene = "uid://cjchik1euohvc"
+
+[node name="Area2D" type="Area2D" parent="Key" unique_id=1397863174]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key/Area2D" unique_id=424789693]
+shape = SubResource("CircleShape2D_6q7i5")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1046263216]
 stream = ExtResource("11_6q7i5")
 volume_db = -10.013
 autoplay = true
 parameters/looping = true
+
+[node name="TextSign" parent="." unique_id=1447238726 instance=ExtResource("13_sdfs7")]
+position = Vector2(1123, 225)
+sign_text = "Cannons shoot!!"
 
 [editable path="Player"]
 [editable path="DeathTrigger"]

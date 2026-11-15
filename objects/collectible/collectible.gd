@@ -4,6 +4,8 @@ signal picked_up(key_id: StringName)
 
 @export var key_id: StringName = &"castle_key"
 @export var hover_height: float = 3.0
+@export_file("*.tscn") var next_scene: String = ""
+@export var transition_delay: float = 1.05
 @export_range(0.2, 10.0, 0.1) var hover_period: float = 2.0
 
 @onready var area: Area2D = $Area2D
@@ -41,6 +43,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	collected = true
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	area.set_deferred("monitoring", false)
 
 	get_tree().current_scene.set_meta(key_id, true)
@@ -65,11 +68,12 @@ func _on_body_entered(body: Node2D) -> void:
 	).set_delay(0.2)
 
 	tween.finished.connect(queue_free)
-
+	if not next_scene.is_empty():
+		StageTransition.go_to_scene(next_scene, transition_delay)
 
 func _spawn_sparkles() -> void:
 	var particles := CPUParticles2D.new()
-
+	particles.process_mode = Node.PROCESS_MODE_ALWAYS
 	particles.emitting = false
 	particles.amount = 10
 	particles.lifetime = 0.9
