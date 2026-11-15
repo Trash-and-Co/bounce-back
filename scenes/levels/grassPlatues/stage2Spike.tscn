@@ -138,4 +138,7 @@ position = Vector2(4448, 1312)
 [node name="Spike28" parent="." unique_id=760391967 instance=ExtResource("6_a0gcg")]
 position = Vector2(2432, 2080)
 
+[node name="Spike9" parent="." unique_id=391221291 instance=ExtResource("6_a0gcg")]
+position = Vector2(4640, 2656)
+
 [editable path="Player"]

@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bq8pry378c5id" path="res://enemies/spike/spikes_up.png" id="1_3jnnk"]
 [ext_resource type="Script" uid="uid://dgvgblsyafqmo" path="res://enemies/spike/onTouch.gd" id="1_ojea8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlmbe"]
-size = Vector2(64, 52)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_vy105"]
+points = PackedVector2Array(-32, -5.5, -32, 22.5, 32, 22.5, 32, -5.5, 28, -5.5, 28, -21.5, -3, -21.5, -28, -21.5, -28, -16.5, -28, -5.5)
 
 [node name="Spike" type="Node2D" unique_id=1282762288]
 script = ExtResource("1_ojea8")
@@ -15,7 +15,7 @@ texture = ExtResource("1_3jnnk")
 [node name="Area2D" type="Area2D" parent="." unique_id=519966933]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1124372241]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_hlmbe")
+position = Vector2(0, 9.5)
+shape = SubResource("ConvexPolygonShape2D_vy105")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

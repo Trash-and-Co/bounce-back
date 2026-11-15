@@ -7,8 +7,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	var camera := player.get_node("Camera2D") as Camera2D
-	var fade := get_tree().current_scene.get_node("FadeToBlack")
-
+	var fade := FadeToBlack
 	if not player.call("claim_death"):
 		return
 
