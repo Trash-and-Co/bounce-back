@@ -13,6 +13,10 @@ const WALL_CONTACT_DISTANCE: float = 3.0
 const CEILING_STRETCH: float = 1.38
 const IDLE_BASE_OFFSET: float = 7.0
 
+const MAX_HITS: int = 3
+const IMPACT_TIME: float = 0.14
+const HOLD_TIME: float = 1.0
+
 @export var launch_power: float = 6.0
 @export var max_drag: float = 120.0
 @export var wall_slide_speed: float = 38.0
@@ -109,7 +113,7 @@ func _physics_process(delta: float) -> void:
 	if detach_pending:
 		move_and_collide(surface_normal * DETACH_DISTANCE)
 		detach_pending = false
-		
+
 	if not attached or not _is_wall(surface_normal):
 		wall_slide_elapsed = 0.0
 
@@ -263,3 +267,67 @@ func claim_death() -> bool:
 	dragging = false
 	trajectory_overlay.queue_redraw()
 	return true
+
+
+func take_damage(on_survived: Callable = Callable()) -> bool:
+	var level := get_tree().current_scene
+	if level == null or level.get_meta("restart_pending", false):
+		return false
+
+	if not claim_death():
+		return false
+
+	set_physics_process(false)
+	_resolve_damage.call_deferred(level, on_survived)
+	return true
+
+
+func _resolve_damage(level: Node, on_survived: Callable) -> void:
+	if get_tree().current_scene != level:
+		return
+
+	velocity = Vector2.ZERO
+	sprite.flip_h = false
+	sprite.flip_v = false
+	sprite.play("idle")
+	sprite.frame = 1
+	sprite.pause()
+
+	var squash := create_tween()
+	squash.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	squash.tween_property(sprite, "scale", Vector2(5.0, 2.0), IMPACT_TIME)
+	await squash.finished
+
+	sprite.hide()
+	await get_tree().create_timer(HOLD_TIME, false).timeout
+
+	if get_tree().current_scene != level:
+		return
+
+	var hits := int(level.get_meta("damage_taken", 0)) + 1
+	var checkpoint := get_tree().get_first_node_in_group("stage_checkpoint")
+
+	if hits >= MAX_HITS or not is_instance_valid(checkpoint):
+		level.set_meta("restart_pending", true)
+		get_tree().reload_current_scene()
+		return
+
+	level.set_meta("damage_taken", hits)
+
+	if on_survived.is_valid():
+		on_survived.call()
+
+	get_tree().call_group("life_counter", "update_lives", hits)
+
+	attached = false
+	detach_pending = false
+	wall_slide_elapsed = 0.0
+	ceiling_elapsed = 0.0
+	surface_normal = Vector2.UP
+	checkpoint.call("toCheckpoint", self)
+
+	_update_sprite_pose()
+	sprite.play("idle")
+	sprite.show()
+	death_in_progress = false
+	set_physics_process(true)
