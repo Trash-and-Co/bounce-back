@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="7_hxciw"]
 [ext_resource type="Texture2D" uid="uid://dn8eex5txypm4" path="res://assets/items/map.png" id="8_jugfk"]
 [ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="9_fvu07"]
+[ext_resource type="PackedScene" uid="uid://ceyvhru8us3lt" path="res://objects/textSign/textSign.tscn" id="8_k0rqn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2ftc"]
 atlas = ExtResource("8_jugfk")
@@ -163,5 +164,9 @@ next_scene = "uid://ckn5ekl8lfwe7"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="map 2_2/Area2D" unique_id=422113695]
 shape = SubResource("CircleShape2D_hwfqr")
+
+[node name="TextSign" parent="." unique_id=1447238726 instance=ExtResource("8_k0rqn")]
+position = Vector2(1000, 800)
+sign_text = "Hello this is sign text."
 
 [editable path="Player"]

@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://is5nhsfmoxgb" path="res://ui/fadeToBlack.tscn" id="6_w5pkf"]
 [ext_resource type="Texture2D" uid="uid://dn8eex5txypm4" path="res://assets/items/map.png" id="11_wfvow"]
 [ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="12_o57h5"]
+[ext_resource type="PackedScene" uid="uid://ceyvhru8us3lt" path="res://objects/textSign/textSign.tscn" id="7_jkjw4"]
+
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mg2o"]
 
@@ -76,8 +79,8 @@ scale = Vector2(3.711111, 3.7111113)
 texture = ExtResource("3_k2svq")
 
 [node name="Signright" type="Sprite2D" parent="." unique_id=834028234]
-position = Vector2(3127, -657)
-scale = Vector2(0.2, 0.2)
+position = Vector2(3138, -616)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_i4qyp")
 
 [node name="Checkpoint" parent="." unique_id=2017083346 instance=ExtResource("4_w4rtc")]
@@ -91,7 +94,22 @@ scale = Vector2(4, 4)
 position = Vector2(4, 4)
 scale = Vector2(20.4, 1)
 
-[node name="FadeToBlack" parent="." unique_id=364107224 instance=ExtResource("6_w5pkf")]
+[node name="TextSign" parent="." unique_id=1447238726 instance=ExtResource("7_jkjw4")]
+position = Vector2(730, 352)
+sign_text = "Drag your mouse to bounce around! Start by jumping over this hole."
+
+[node name="TextSign2" parent="." unique_id=1657833337 instance=ExtResource("7_jkjw4")]
+position = Vector2(2862, 352)
+sign_text = "The next section requires wall jumping to get up. Try it!"
+
+[node name="TextSign3" parent="." unique_id=1137256225 instance=ExtResource("7_jkjw4")]
+position = Vector2(4726, 356)
+sign_text = "Remember: don't always blindly jump in a pit!"
+
+[node name="TextSign4" parent="." unique_id=92719201 instance=ExtResource("7_jkjw4")]
+position = Vector2(4350, -1500)
+sign_text = "Collect the item to complete the level! 
+P.S. Curiosity knows no bounds. Maybe take a look around a little?"
 
 [node name="Map 1_2" type="Sprite2D" parent="." unique_id=1057039017]
 texture_filter = 1

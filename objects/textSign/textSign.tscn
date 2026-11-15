@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://ceyvhru8us3lt"]
+
+[ext_resource type="Texture2D" uid="uid://chsnm6y5jpp4m" path="res://assets/signs/sign.png" id="1_4dhng"]
+[ext_resource type="Script" uid="uid://bmiirogm307a6" path="res://objects/textSign/showSignText.gd" id="1_kg0er"]
+[ext_resource type="Texture2D" uid="uid://l6u8dtjxmb5y" path="res://assets/signs/woodenborder.png" id="3_cxy7i"]
+[ext_resource type="FontFile" uid="uid://4fox4h7hggqn" path="res://assets/fonts/Pixel Intv.otf" id="4_8nc25"]
+[ext_resource type="Texture2D" uid="uid://dfhabbw33negg" path="res://assets/signs/woodeninteral.png" id="4_lvqqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah671"]
+size = Vector2(32, 42)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k0rqn"]
+texture = ExtResource("3_cxy7i")
+texture_margin_left = 6.0
+texture_margin_top = 8.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+draw_center = false
+
+[node name="TextSign" type="Area2D" unique_id=1447238726]
+script = ExtResource("1_kg0er")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1017679153]
+texture_filter = 1
+texture = ExtResource("1_4dhng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=729336357]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_ah671")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1250460558]
+texture_filter = 1
+offset_left = -224.0
+offset_top = -256.0
+offset_right = 224.0
+offset_bottom = -64.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_k0rqn")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer" unique_id=30339026]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_lvqqh")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer" unique_id=1073807393]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("4_8nc25")
+theme_override_font_sizes/font_size = 24
+text = "sign text!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
