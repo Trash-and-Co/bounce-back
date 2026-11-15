@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c6mksld7kw1tv"]
+
+[ext_resource type="TileSet" uid="uid://dm6tw6msia23m" path="res://assets/tilesets/tilesMain.tres" id="1_gqrfe"]
+[ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="2_vuilm"]
+[ext_resource type="Texture2D" uid="uid://bi0me184esy0w" path="res://assets/SlimePlatformerAssets/Backgrounds/Bg2.png" id="3_xnccm"]
+[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://objects/hud/hud.gd" id="4_125h7"]
+[ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="5_6o7uw"]
+[ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="6_r0uyq"]
+
+[node name="Stage2Spike" type="Node2D" unique_id=965111673]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=350018875]
+tile_set = ExtResource("1_gqrfe")
+
+[node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_vuilm")]
+position = Vector2(576, 320)
+
+[node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
+position = Vector2(-5.222229, 5)
+scale = Vector2(3.711111, 3.7111113)
+texture = ExtResource("3_xnccm")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1570672357]
+script = ExtResource("4_125h7")
+
+[node name="Lives" type="HBoxContainer" parent="HUD" unique_id=765617839]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Live1" type="TextureRect" parent="HUD/Lives" unique_id=1111015175]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_6o7uw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Live2" type="TextureRect" parent="HUD/Lives" unique_id=1813857710]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_6o7uw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Live3" type="TextureRect" parent="HUD/Lives" unique_id=1714399859]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_6o7uw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Checkpoint" parent="." unique_id=2017083346 instance=ExtResource("6_r0uyq")]
+position = Vector2(368, 368)
+
+[editable path="Player"]
