@@ -82,7 +82,7 @@ position = Vector2(4, 4)
 scale = Vector2(20.4, 1)
 
 [node name="TextSign" parent="." unique_id=1447238726 instance=ExtResource("7_jkjw4")]
-position = Vector2(574, 352)
+position = Vector2(730, 352)
 sign_text = "Drag your mouse to bounce around! Start by jumping over this hole."
 
 [node name="TextSign2" parent="." unique_id=1657833337 instance=ExtResource("7_jkjw4")]
@@ -94,7 +94,7 @@ position = Vector2(4726, 356)
 sign_text = "Remember: don't always blindly jump in a pit!"
 
 [node name="TextSign4" parent="." unique_id=92719201 instance=ExtResource("7_jkjw4")]
-position = Vector2(4330, -1500)
+position = Vector2(4350, -1500)
 sign_text = "Collect the item to complete the level! 
 P.S. Curiosity knows no bounds. Maybe take a look around a little?"
 
