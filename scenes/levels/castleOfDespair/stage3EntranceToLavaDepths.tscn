@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="6_ue4uh"]
 [ext_resource type="PackedScene" uid="uid://dl7kqpfvinyc8" path="res://enemies/cannon/cannon.tscn" id="7_v6a5q"]
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="8_t6i05"]
+[ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="9_v6a5q"]
 
 [node name="Stage2Spike" type="Node2D" unique_id=965111673]
 
@@ -16,7 +17,7 @@ tile_map_data = PackedByteArray("AAAXAAoAAAAIAAAAAAAXAAkAAAAFAAAAAAAXAAgAAAACAAA
 tile_set = ExtResource("1_s4jsk")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_6tc1s")]
-position = Vector2(6016, 2816)
+position = Vector2(576, 480)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
 position = Vector2(11.66626, -4.5)
@@ -261,4 +262,9 @@ rotation = 1.5707964
 position = Vector2(2688, -256)
 rotation = 1.5707964
 
+[node name="DeathTrigger" parent="." unique_id=310666320 instance=ExtResource("9_v6a5q")]
+position = Vector2(2080, 1024)
+scale = Vector2(102.600365, -4.63166)
+
 [editable path="Player"]
+[editable path="DeathTrigger"]
