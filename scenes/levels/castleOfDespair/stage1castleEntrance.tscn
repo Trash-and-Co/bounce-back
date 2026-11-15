@@ -3,11 +3,16 @@
 [ext_resource type="TileSet" uid="uid://dm6tw6msia23m" path="res://assets/tilesets/tilesMain.tres" id="1_sm27w"]
 [ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="2_ycw4d"]
 [ext_resource type="Texture2D" uid="uid://ch6vcxg0veod2" path="res://assets/SlimePlatformerAssets/Backgrounds/Dungeon_brick_wall_blue.png.png" id="3_i14sp"]
-[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://objects/hud/hud.gd" id="4_kxpt4"]
+[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://ui/hud/hud.gd" id="4_kxpt4"]
 [ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="5_0lbfc"]
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="6_afce4"]
 [ext_resource type="PackedScene" uid="uid://cgomkkkcqaqpk" path="res://objects/toggleSwitch/toggleSwitch.tscn" id="7_1wi1p"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="8_304kv"]
+[ext_resource type="Texture2D" uid="uid://ca01o7kln5h71" path="res://assets/signs/sign with no pole.png" id="9_dwxoj"]
+[ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="10_ki6u1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i2se7"]
+radius = 12.0
 
 [node name="Stage2Spike" type="Node2D" unique_id=965111673]
 
@@ -16,10 +21,10 @@ tile_map_data = PackedByteArray("AAARAA8AAAAEAAAAAAARAA4AAAAMAAAAAAARAA0AAAAMAAA
 tile_set = ExtResource("1_sm27w")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_ycw4d")]
-position = Vector2(576, 320)
+position = Vector2(565, 355)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
-position = Vector2(-32, 6.1035156e-05)
+position = Vector2(145.99998, -106)
 scale = Vector2(0.78194445, 0.7819445)
 texture = ExtResource("3_i14sp")
 
@@ -86,6 +91,21 @@ platform_layer = NodePath("../TileMapLayer3")
 [node name="DeathTrigger" parent="." unique_id=310666320 instance=ExtResource("8_304kv")]
 position = Vector2(2816, 864.0001)
 scale = Vector2(59.352985, 5.6124735)
+
+[node name="direction arrow" type="Sprite2D" parent="." unique_id=1207175810]
+texture_filter = 1
+position = Vector2(5410.0005, 550)
+scale = Vector2(0.084755965, 0.0829311)
+texture = ExtResource("9_dwxoj")
+script = ExtResource("10_ki6u1")
+key_id = &"arrow"
+hover_height = 65.0
+next_scene = "uid://bgjv6maxgnyd7"
+
+[node name="Area2D" type="Area2D" parent="direction arrow" unique_id=213914235]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="direction arrow/Area2D" unique_id=1498319288]
+shape = SubResource("CircleShape2D_i2se7")
 
 [editable path="Player"]
 [editable path="DeathTrigger"]
