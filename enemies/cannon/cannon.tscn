@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dl7kqpfvinyc8"]
+
+[ext_resource type="Script" uid="uid://de4o4vgweco6" path="res://enemies/cannon/cannon.gd" id="1_aqcg8"]
+[ext_resource type="PackedScene" uid="uid://8805jv1nafkm" path="res://enemies/bullet & particle/bullet.tscn" id="2_1g2i6"]
+[ext_resource type="Texture2D" uid="uid://cnixi22a852tw" path="res://assets/sprites/canon.png" id="3_s02et"]
+
+[node name="Cannon" type="Node2D" unique_id=2061064850]
+script = ExtResource("1_aqcg8")
+bullet_scene = ExtResource("2_1g2i6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=316046647]
+texture_filter = 1
+position = Vector2(34, 472)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("3_s02et")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1093282910]
+wait_time = 3.0
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1124606796]
+position = Vector2(64, 472)
