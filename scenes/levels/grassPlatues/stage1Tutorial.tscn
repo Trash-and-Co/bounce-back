@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="4_w4rtc"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="5_w5pkf"]
 [ext_resource type="PackedScene" uid="uid://ceyvhru8us3lt" path="res://objects/textSign/textSign.tscn" id="7_jkjw4"]
+[ext_resource type="AudioStream" uid="uid://bvs28kfuht74m" path="res://assets/sounds/music/haven_bg2.ogg" id="11_8ux1n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mg2o"]
 
@@ -97,6 +98,12 @@ sign_text = "Remember: don't always blindly jump in a pit!"
 position = Vector2(4350, -1500)
 sign_text = "Collect the item to complete the level! 
 P.S. Curiosity knows no bounds. Maybe take a look around a little?"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=534743243]
+stream = ExtResource("11_8ux1n")
+volume_db = -10.013
+autoplay = true
+parameters/looping = true
 
 [editable path="Player"]
 [editable path="DeathTrigger"]

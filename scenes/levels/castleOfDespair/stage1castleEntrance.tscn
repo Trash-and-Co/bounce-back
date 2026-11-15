@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="6_afce4"]
 [ext_resource type="PackedScene" uid="uid://cgomkkkcqaqpk" path="res://objects/toggleSwitch/toggleSwitch.tscn" id="7_1wi1p"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="8_304kv"]
+[ext_resource type="AudioStream" uid="uid://bvs28kfuht74m" path="res://assets/sounds/music/haven_bg2.ogg" id="11_ki6u1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dgfsc"]
 radius = 12.0
@@ -103,6 +104,12 @@ platform_layer = NodePath("../TileMapLayer3")
 [node name="DeathTrigger" parent="." unique_id=310666320 instance=ExtResource("8_304kv")]
 position = Vector2(2816, 864.0001)
 scale = Vector2(59.352985, 5.6124735)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=697308776]
+stream = ExtResource("11_ki6u1")
+volume_db = -10.013
+autoplay = true
+parameters/looping = true
 
 [editable path="Player"]
 [editable path="DeathTrigger"]

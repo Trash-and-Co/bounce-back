@@ -3,13 +3,14 @@
 [ext_resource type="TileSet" uid="uid://dm6tw6msia23m" path="res://assets/tilesets/tilesMain.tres" id="1_2tag2"]
 [ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="2_y4qqs"]
 [ext_resource type="Texture2D" uid="uid://bgiqdsk8hoahm" path="res://assets/SlimePlatformerAssets/Backgrounds/04_pyreheart.png" id="3_xh3kv"]
-[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://objects/hud/hud.gd" id="4_6tbew"]
+[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://ui/hud/hud.gd" id="4_6tbew"]
 [ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="5_xh3kv"]
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="6_1tg8c"]
 [ext_resource type="PackedScene" uid="uid://cgomkkkcqaqpk" path="res://objects/toggleSwitch/toggleSwitch.tscn" id="7_gtr4s"]
 [ext_resource type="PackedScene" uid="uid://dl7kqpfvinyc8" path="res://enemies/cannon/cannon.tscn" id="8_6tbew"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="9_xh3kv"]
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="10_1tg8c"]
+[ext_resource type="AudioStream" uid="uid://jnrls0l2c7j" path="res://assets/sounds/music/haven_bg3.ogg" id="11_1tg8c"]
 
 [node name="Stage2Spike" type="Node2D" unique_id=965111673]
 
@@ -252,6 +253,12 @@ position = Vector2(1632, 1568)
 
 [node name="Spike23" parent="." unique_id=281615138 instance=ExtResource("10_1tg8c")]
 position = Vector2(1184, 1568)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1538715984]
+stream = ExtResource("11_1tg8c")
+volume_db = -10.013
+autoplay = true
+parameters/looping = true
 
 [editable path="Player"]
 [editable path="DeathTrigger"]

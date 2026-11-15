@@ -3,12 +3,13 @@
 [ext_resource type="TileSet" uid="uid://dm6tw6msia23m" path="res://assets/tilesets/tilesMain.tres" id="1_s4jsk"]
 [ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="2_6tc1s"]
 [ext_resource type="Texture2D" uid="uid://ch6vcxg0veod2" path="res://assets/SlimePlatformerAssets/Backgrounds/Dungeon_brick_wall_blue.png.png" id="3_k8gxj"]
-[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://objects/hud/hud.gd" id="4_w8im0"]
+[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://ui/hud/hud.gd" id="4_w8im0"]
 [ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="5_l82n1"]
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="6_ue4uh"]
 [ext_resource type="PackedScene" uid="uid://dl7kqpfvinyc8" path="res://enemies/cannon/cannon.tscn" id="7_v6a5q"]
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="8_t6i05"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="9_v6a5q"]
+[ext_resource type="AudioStream" uid="uid://jnrls0l2c7j" path="res://assets/sounds/music/haven_bg3.ogg" id="10_t6i05"]
 
 [node name="Stage2Spike" type="Node2D" unique_id=965111673]
 
@@ -265,6 +266,12 @@ rotation = 1.5707964
 [node name="DeathTrigger" parent="." unique_id=310666320 instance=ExtResource("9_v6a5q")]
 position = Vector2(2080, 1024)
 scale = Vector2(102.600365, -4.63166)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1981768619]
+stream = ExtResource("10_t6i05")
+volume_db = -10.013
+autoplay = true
+parameters/looping = true
 
 [editable path="Player"]
 [editable path="DeathTrigger"]
