@@ -29,6 +29,9 @@ const HOLD_TIME: float = 1.0
 @onready var sprite_rest_scale: Vector2 = sprite.scale
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
+@onready var jump_sfx: AudioStreamPlayer2D = $JumpSFX
+@onready var drop_sfx: AudioStreamPlayer2D = $DropSFX
+
 var attached: bool = false
 var death_in_progress: bool = false
 var dragging: bool = false
@@ -86,6 +89,11 @@ func _input(event: InputEvent) -> void:
 	velocity = shot
 	attached = false
 	detach_pending = true
+
+	drop_sfx.stop()
+	jump_sfx.pitch_scale = randf_range(0.95, 1.05)
+	jump_sfx.play()
+
 	sprite.play("idle")
 	_update_sprite_pose()
 
@@ -171,6 +179,9 @@ func _hang_from_ceiling(delta: float) -> void:
 		dragging = false
 		velocity = Vector2.ZERO
 
+		drop_sfx.pitch_scale = randf_range(0.95, 1.05)
+		drop_sfx.play()
+
 
 func _update_sprite_pose() -> void:
 	var on_ceiling := attached and _is_ceiling(surface_normal)
@@ -211,6 +222,9 @@ func _slide_down_wall(delta: float) -> void:
 		velocity = slide_velocity
 		surface_normal = Vector2.UP
 		sprite.play("idle")
+
+		drop_sfx.pitch_scale = randf_range(0.95, 1.05)
+		drop_sfx.play()
 
 
 func _update_trajectory(shot: Vector2, delta: float, dot_limit: int) -> void:

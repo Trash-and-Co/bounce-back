@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="8_t6i05"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="9_v6a5q"]
 [ext_resource type="AudioStream" uid="uid://jnrls0l2c7j" path="res://assets/sounds/music/haven_bg3.ogg" id="10_t6i05"]
-[ext_resource type="PackedScene" uid="uid://ds54xbndfnvl6" path="res://objects/stage_exit/stageExit.tscn" id="10_t6i05"]
+[ext_resource type="PackedScene" uid="uid://ds54xbndfnvl6" path="res://objects/stage_exit/stageExit.tscn" id="11_nt01p"]
 
 [node name="Stage2Spike" type="Node2D" unique_id=965111673]
 
@@ -272,7 +272,7 @@ scale = Vector2(102.600365, -4.63166)
 stream = ExtResource("10_t6i05")
 volume_db = -10.013
 autoplay = true
-parameters/looping = true
+
 [node name="Spike32" parent="." unique_id=844819848 instance=ExtResource("8_t6i05")]
 position = Vector2(6176, 2848)
 
@@ -312,7 +312,7 @@ position = Vector2(3872, 2016)
 [node name="Spike44" parent="." unique_id=176165307 instance=ExtResource("8_t6i05")]
 position = Vector2(3808, 1504)
 
-[node name="StageExit" parent="." unique_id=13219813 instance=ExtResource("10_t6i05")]
+[node name="StageExit" parent="." unique_id=13219813 instance=ExtResource("11_nt01p")]
 position = Vector2(9536, 4992)
 scale = Vector2(38.207672, -8.975185)
 next_stage = "uid://c0iu6rpepsy0r"
