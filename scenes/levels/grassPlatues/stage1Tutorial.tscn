@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="4_w4rtc"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="5_w5pkf"]
 [ext_resource type="PackedScene" uid="uid://is5nhsfmoxgb" path="res://ui/fadeToBlack.tscn" id="6_w5pkf"]
-[ext_resource type="Script" uid="uid://27v7xt4pmixc" path="res://objects/hud/minimap.gd" id="9_22r5b"]
 
 [node name="Stage1Tutorial" type="Node2D" unique_id=524240727]
 position = Vector2(-406, 228)
@@ -41,28 +40,6 @@ position = Vector2(4, 4)
 scale = Vector2(20.4, 1)
 
 [node name="FadeToBlack" parent="." unique_id=364107224 instance=ExtResource("6_w5pkf")]
-
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1285574130]
-
-[node name="Minimap" type="Panel" parent="HUD" unique_id=128420145 node_paths=PackedStringArray("world_background")]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("9_22r5b")
-world_background = NodePath("../../Player/Camera2D/Background")
-
-[node name="MapDisplay" type="TextureRect" parent="HUD/Minimap" unique_id=2050476923]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MapViewport" type="SubViewport" parent="HUD/Minimap" unique_id=1624120222]
-
-[node name="MapCamera" type="Camera2D" parent="HUD/Minimap/MapViewport" unique_id=2081285310]
-
-[node name="PlayerDot" type="ColorRect" parent="HUD/Minimap" unique_id=1983806940]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [editable path="Player"]
 [editable path="DeathTrigger"]

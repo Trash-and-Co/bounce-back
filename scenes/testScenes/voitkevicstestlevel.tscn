@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="2_b1ktf"]
 [ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="4_d157y"]
 [ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://objects/hud/hud.gd" id="4_mhaos"]
+[ext_resource type="Script" uid="uid://27v7xt4pmixc" path="res://objects/hud/minimap.gd" id="6_k25xa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(1000, 40)
@@ -96,3 +97,23 @@ mouse_filter = 2
 texture = ExtResource("4_d157y")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Minimap" type="Panel" parent="HUD" unique_id=1136735116]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_k25xa")
+map_zoom = 0.08
+
+[node name="MapDisplay" type="TextureRect" parent="HUD/Minimap" unique_id=1039266953]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MapViewport" type="SubViewport" parent="HUD/Minimap" unique_id=320108277]
+
+[node name="MapCamera" type="Camera2D" parent="HUD/Minimap/MapViewport" unique_id=1447620312]
+
+[node name="PlayerDot" type="ColorRect" parent="HUD/Minimap" unique_id=918812677]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

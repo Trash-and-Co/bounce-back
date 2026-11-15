@@ -1,8 +1,8 @@
 extends Panel
 
 @export var map_size: Vector2i = Vector2i(220, 136)
-@export_range(0.05, 0.5, 0.01) var map_zoom: float = 0.16
-@export var world_background: CanvasItem
+@export_range(0.05, 0.5, 0.01) var map_zoom: float = 0.12
+@export var background_texture: Texture2D
 
 @onready var display: TextureRect = $MapDisplay
 @onready var map_viewport: SubViewport = $MapViewport
@@ -10,33 +10,7 @@ extends Panel
 
 var player: Node2D
 var player_dot: ColorRect
-
-const MAP_SHADER := """
-shader_type canvas_item;
-render_mode unshaded;
-
-void fragment() {
-	vec2 pixel = TEXTURE_PIXEL_SIZE;
-
-	float solid = step(0.1, texture(TEXTURE, UV).a);
-	float left = step(0.1, texture(TEXTURE, UV - vec2(pixel.x, 0.0)).a);
-	float right = step(0.1, texture(TEXTURE, UV + vec2(pixel.x, 0.0)).a);
-	float above = step(0.1, texture(TEXTURE, UV - vec2(0.0, pixel.y)).a);
-	float below = step(0.1, texture(TEXTURE, UV + vec2(0.0, pixel.y)).a);
-
-	float neighbors = min(min(left, right), min(above, below));
-	float edge = solid * (1.0 - neighbors);
-
-	vec3 color = mix(
-		vec3(0.07, 0.08, 0.09),
-		vec3(0.32, 0.33, 0.30),
-		solid
-	);
-
-	color = mix(color, vec3(0.68, 0.70, 0.61), edge);
-	COLOR = vec4(color, 1.0);
-}
-"""
+var backdrop: TextureRect
 
 
 func _ready() -> void:
@@ -44,22 +18,29 @@ func _ready() -> void:
 	clip_contents = true
 
 	var frame := StyleBoxFlat.new()
-	frame.bg_color = Color("151719")
-	frame.border_color = Color("0b0d0e")
+	frame.bg_color = Color("91bdd1")
+	frame.border_color = Color("171b20")
 	frame.set_border_width_all(2)
 	add_theme_stylebox_override("panel", frame)
 
+	backdrop = TextureRect.new()
+	backdrop.name = "MapBackground"
+	backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	backdrop.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	backdrop.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	backdrop.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	add_child(backdrop)
+
+	backdrop.texture = background_texture
+
+	display.material = null
+	display.use_parent_material = false
+	display.self_modulate = Color.WHITE
 	display.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	display.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	display.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	display.stretch_mode = TextureRect.STRETCH_SCALE
-
-	var shader := Shader.new()
-	shader.code = MAP_SHADER
-
-	var map_material := ShaderMaterial.new()
-	map_material.shader = shader
-	display.material = map_material
+	display.z_index = 1
 
 	map_viewport.disable_3d = true
 	map_viewport.gui_disable_input = true
@@ -70,12 +51,9 @@ func _ready() -> void:
 
 	display.texture = map_viewport.get_texture()
 
-	if is_instance_valid(world_background):
-		get_viewport().canvas_cull_mask |= 2
-		world_background.visibility_layer = 2
-
 	map_camera.enabled = true
 	map_camera.position_smoothing_enabled = false
+	map_camera.offset = Vector2.ZERO
 	map_camera.make_current()
 
 	player_dot = get_node_or_null("PlayerDot") as ColorRect
@@ -86,14 +64,14 @@ func _ready() -> void:
 		add_child(player_dot)
 
 	player_dot.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	player_dot.color = Color("edffc5")
-	player_dot.size = Vector2(6, 6)
+	player_dot.color = Color.WHITE
+	player_dot.size = Vector2(4, 4)
 	player_dot.z_index = 2
 
 	var outline := ColorRect.new()
-	outline.color = Color("0b0d0e")
-	outline.position = Vector2(-2, -2)
-	outline.size = Vector2(10, 10)
+	outline.color = Color("171b20")
+	outline.position = Vector2(-1, -1)
+	outline.size = Vector2(6, 6)
 	outline.show_behind_parent = true
 	outline.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	player_dot.add_child(outline)
@@ -111,6 +89,10 @@ func _place_minimap() -> void:
 
 	display.position = Vector2(3, 3)
 	display.size = size - Vector2(6, 6)
+
+	backdrop.position = display.position
+	backdrop.size = display.size
+
 	map_viewport.size = Vector2i(display.size)
 
 	player_dot.position = (
