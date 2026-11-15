@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cgomkkkcqaqpk" path="res://objects/toggleSwitch/toggleSwitch.tscn" id="9_du66a"]
 [ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="9_t5uru"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="10_t5uru"]
+[ext_resource type="PackedScene" uid="uid://ceyvhru8us3lt" path="res://objects/textSign/textSign.tscn" id="13_sdfs7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6q7i5"]
 radius = 12.0
@@ -145,6 +146,10 @@ next_scene = "uid://cjchik1euohvc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Key/Area2D" unique_id=424789693]
 shape = SubResource("CircleShape2D_6q7i5")
+
+[node name="TextSign" parent="." unique_id=1447238726 instance=ExtResource("13_sdfs7")]
+position = Vector2(1123, 225)
+sign_text = "Cannons shoot!!"
 
 [editable path="Player"]
 [editable path="DeathTrigger"]
