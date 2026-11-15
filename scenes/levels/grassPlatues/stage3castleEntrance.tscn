@@ -158,7 +158,7 @@ layout_mode = 2
 [node name="Continue" type="Button" parent="Letter/CanvasLayer/Dialogue/VBoxContainer" unique_id=641121507]
 layout_mode = 2
 
-[node name="map 2_2" type="Sprite2D" parent="." unique_id=1052072900]
+[node name="direction arrow" type="Sprite2D" parent="." unique_id=1052072900]
 texture_filter = 1
 position = Vector2(6780, 1442.0001)
 scale = Vector2(0.084755965, 0.0829311)
@@ -168,9 +168,9 @@ key_id = &"arrow"
 hover_height = 65.0
 next_scene = "uid://6ghs2o6jyegm"
 
-[node name="Area2D" type="Area2D" parent="map 2_2" unique_id=249855790]
+[node name="Area2D" type="Area2D" parent="direction arrow" unique_id=249855790]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="map 2_2/Area2D" unique_id=156887346]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="direction arrow/Area2D" unique_id=156887346]
 shape = SubResource("CircleShape2D_m16yo")
 
 [editable path="Player"]
