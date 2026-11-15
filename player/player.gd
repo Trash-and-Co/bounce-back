@@ -16,6 +16,8 @@ const IDLE_BASE_OFFSET: float = 7.0
 @export var launch_power: float = 6.0
 @export var max_drag: float = 120.0
 @export var wall_slide_speed: float = 38.0
+@export var wall_slide_acceleration: float = 220.0
+@export var max_wall_slide_speed: float = 420.0
 @export_range(0.1, 5.0, 0.1) var ceiling_hang_time: float = 2.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -26,6 +28,7 @@ const IDLE_BASE_OFFSET: float = 7.0
 var attached: bool = false
 var death_in_progress: bool = false
 var dragging: bool = false
+var wall_slide_elapsed: float = 0.0
 var drag_start: Vector2 = Vector2.ZERO
 var pullback_started: bool = false
 var surface_normal: Vector2 = Vector2.UP
@@ -106,6 +109,9 @@ func _physics_process(delta: float) -> void:
 	if detach_pending:
 		move_and_collide(surface_normal * DETACH_DISTANCE)
 		detach_pending = false
+		
+	if not attached or not _is_wall(surface_normal):
+		wall_slide_elapsed = 0.0
 
 	if attached:
 		if not death_in_progress:
@@ -139,6 +145,9 @@ func _is_ceiling(normal: Vector2) -> bool:
 
 
 func _attach_to_surface(normal: Vector2) -> void:
+	if not attached or not _is_wall(surface_normal) or surface_normal.dot(normal) < 0.95:
+		wall_slide_elapsed = 0.0
+
 	velocity = Vector2.ZERO
 	attached = true
 	surface_normal = normal
@@ -178,8 +187,16 @@ func _update_sprite_pose() -> void:
 
 
 func _slide_down_wall(delta: float) -> void:
-	var slide_velocity := Vector2.DOWN.slide(surface_normal).normalized() * wall_slide_speed
+	wall_slide_elapsed += delta
+
+	var speed := minf(
+		wall_slide_speed + wall_slide_acceleration * wall_slide_elapsed,
+		maxf(wall_slide_speed, max_wall_slide_speed)
+	)
+
+	var slide_velocity := Vector2.DOWN.slide(surface_normal).normalized() * speed
 	var collision := move_and_collide(slide_velocity * delta)
+
 	if collision:
 		_attach_to_surface(collision.get_normal())
 		return
