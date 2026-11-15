@@ -13,7 +13,7 @@ size = Vector2(1000, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwv3a"]
 size = Vector2(40, 300)
 
-[node name="main" type="Node2D" unique_id=599523800]
+[node name="main2" type="Node2D" unique_id=599523800]
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("1_fll2l")]
 position = Vector2(200, 200)
