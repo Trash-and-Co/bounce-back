@@ -10,6 +10,8 @@ extends Sprite2D
 @onready var dialogue: PanelContainer = $CanvasLayer/Dialogue
 @onready var text_label: Label = $CanvasLayer/Dialogue/VBoxContainer/Text
 @onready var continue_button: Button = $CanvasLayer/Dialogue/VBoxContainer/Continue
+@export_file("*.tscn") var next_scene: String = ""
+@export var close_text: String = "Put away"
 
 var elapsed: float = 0.0
 var original_offset_y: float
@@ -67,7 +69,7 @@ func _ready() -> void:
 	text_label.add_theme_constant_override("line_spacing", 4)
 	text_label.text = message
 
-	continue_button.text = "Put away"
+	continue_button.text = close_text
 	continue_button.size_flags_horizontal = Control.SIZE_SHRINK_END
 	continue_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	continue_button.add_theme_font_size_override("font_size", 18)
@@ -181,3 +183,6 @@ func _close_letter() -> void:
 	dialogue.hide()
 	shade.hide()
 	get_tree().paused = false
+
+	if not next_scene.is_empty():
+		StageTransition.go_to_scene(next_scene, 0.0)
