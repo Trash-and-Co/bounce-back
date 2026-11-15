@@ -3,11 +3,17 @@
 [ext_resource type="TileSet" uid="uid://dm6tw6msia23m" path="res://assets/tilesets/tilesMain.tres" id="1_s4jsk"]
 [ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="2_6tc1s"]
 [ext_resource type="Texture2D" uid="uid://ch6vcxg0veod2" path="res://assets/SlimePlatformerAssets/Backgrounds/Dungeon_brick_wall_blue.png.png" id="3_k8gxj"]
-[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://objects/hud/hud.gd" id="4_w8im0"]
+[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://ui/hud/hud.gd" id="4_w8im0"]
 [ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="5_l82n1"]
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="6_ue4uh"]
 [ext_resource type="PackedScene" uid="uid://dl7kqpfvinyc8" path="res://enemies/cannon/cannon.tscn" id="7_v6a5q"]
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="8_t6i05"]
+[ext_resource type="Texture2D" uid="uid://djeprtg5flydd" path="res://assets/items/08.png" id="9_nt01p"]
+[ext_resource type="Script" uid="uid://cyh4h3ptm0r3b" path="res://ui/letter.gd" id="10_hyjvm"]
+[ext_resource type="FontFile" uid="uid://4fox4h7hggqn" path="res://assets/fonts/Pixel Intv.otf" id="11_f6noa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2dnw"]
+size = Vector2(14, 71.666626)
 
 [node name="Stage2Spike" type="Node2D" unique_id=965111673]
 
@@ -260,5 +266,47 @@ rotation = 1.5707964
 [node name="Cannon6" parent="." unique_id=91645371 instance=ExtResource("7_v6a5q")]
 position = Vector2(2688, -256)
 rotation = 1.5707964
+
+[node name="Letter" type="Sprite2D" parent="." unique_id=454720088]
+texture_filter = 1
+position = Vector2(6316, 2802)
+scale = Vector2(3, 3)
+texture = ExtResource("9_nt01p")
+script = ExtResource("10_hyjvm")
+letter_font = ExtResource("11_f6noa")
+message = "Hey buddy!
+
+You found the key in the Castle of Despair! I knew I could count on you.
+
+Unfortunately, they've moved me down into the Magma Underworld. I'm still locked up, but that key can open my cage.
+
+Follow the passage until the magma starts appearing. There's a big hole in the floor ahead. Drop in! That's the way down to me.
+
+Bring the key and free me. Please hurry. It's getting a little too warm for a slime!
+
+Your pal,
+Bob"
+
+[node name="Area2D" type="Area2D" parent="Letter" unique_id=1352716812]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Letter/Area2D" unique_id=1988002188]
+position = Vector2(0, -5.333313)
+shape = SubResource("RectangleShape2D_v2dnw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Letter" unique_id=837682807]
+
+[node name="Dialogue" type="PanelContainer" parent="Letter/CanvasLayer" unique_id=882056900]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Letter/CanvasLayer/Dialogue" unique_id=678791396]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="Letter/CanvasLayer/Dialogue/VBoxContainer" unique_id=1156520809]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="Letter/CanvasLayer/Dialogue/VBoxContainer" unique_id=620251219]
+layout_mode = 2
 
 [editable path="Player"]

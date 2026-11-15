@@ -7,6 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="5_a0gcg"]
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="6_a0gcg"]
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="7_hxciw"]
+[ext_resource type="Texture2D" uid="uid://dn8eex5txypm4" path="res://assets/items/map.png" id="8_jugfk"]
+[ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="9_fvu07"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2ftc"]
+atlas = ExtResource("8_jugfk")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hwfqr"]
+radius = 12.0
 
 [node name="Stage2Spike" type="Node2D" unique_id=965111673]
 
@@ -15,7 +24,7 @@ tile_map_data = PackedByteArray("AAAZAA8AAAAIAAMAAAAZAA4AAAAMAAMAAAAZAA0AAAABAAM
 tile_set = ExtResource("1_srwtk")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_rh8md")]
-position = Vector2(857, 553)
+position = Vector2(5086, 599)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
 position = Vector2(-5.222229, 5)
@@ -140,5 +149,19 @@ position = Vector2(2432, 2080)
 
 [node name="Spike9" parent="." unique_id=391221291 instance=ExtResource("6_a0gcg")]
 position = Vector2(4640, 2656)
+
+[node name="map 2_2" type="Sprite2D" parent="." unique_id=1472282278]
+texture_filter = 1
+position = Vector2(4974, 701)
+scale = Vector2(3.5, 3.5)
+texture = SubResource("AtlasTexture_l2ftc")
+script = ExtResource("9_fvu07")
+key_id = &"map_piece_2"
+next_scene = "uid://ckn5ekl8lfwe7"
+
+[node name="Area2D" type="Area2D" parent="map 2_2" unique_id=1924511116]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="map 2_2/Area2D" unique_id=422113695]
+shape = SubResource("CircleShape2D_hwfqr")
 
 [editable path="Player"]

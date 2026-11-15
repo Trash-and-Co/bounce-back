@@ -12,15 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://cgomkkkcqaqpk" path="res://objects/toggleSwitch/toggleSwitch.tscn" id="9_du66a"]
 [ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="9_t5uru"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="10_t5uru"]
-[ext_resource type="Texture2D" uid="uid://djeprtg5flydd" path="res://assets/items/08.png" id="13_ebe8k"]
-[ext_resource type="Script" uid="uid://cyh4h3ptm0r3b" path="res://ui/letter.gd" id="14_d1bk6"]
-[ext_resource type="FontFile" uid="uid://4fox4h7hggqn" path="res://assets/fonts/Pixel Intv.otf" id="15_hcglw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6q7i5"]
 radius = 12.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgfsc"]
-size = Vector2(14, 71.666626)
 
 [node name="Stage2Spike2" type="Node2D" unique_id=965111673]
 
@@ -29,7 +23,7 @@ tile_map_data = PackedByteArray("AAALAAkAAAAFAAAAAAALAAgAAAACAAAAAAAKAAkAAAAEAAA
 tile_set = ExtResource("1_67ug3")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_yxg7v")]
-position = Vector2(4767, 1902)
+position = Vector2(563, 332)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
 position = Vector2(3.6672363, 0)
@@ -141,54 +135,16 @@ scale = Vector2(82.01241, 3.722608)
 
 [node name="Key" type="Sprite2D" parent="." unique_id=1466431997]
 texture_filter = 1
-position = Vector2(5083, 1901)
+position = Vector2(5085.0005, 1902.9999)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("8_du66a")
 script = ExtResource("9_t5uru")
-next_scene = "uid://6ghs2o6jyegm"
+next_scene = "uid://cjchik1euohvc"
 
 [node name="Area2D" type="Area2D" parent="Key" unique_id=1397863174]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Key/Area2D" unique_id=424789693]
 shape = SubResource("CircleShape2D_6q7i5")
-
-[node name="Letter" type="Sprite2D" parent="." unique_id=8313052]
-texture_filter = 1
-position = Vector2(5008, 1902)
-scale = Vector2(3, 3)
-texture = ExtResource("13_ebe8k")
-script = ExtResource("14_d1bk6")
-letter_font = ExtResource("15_hcglw")
-message = "Hey buddy! 
-
-Looks like I got myself into a bit of a jam. I'm currently locked up just past the grass plateaus, and to make matters worse, they took the key and hid it deep inside the Castle of Despair. 
-
-If you could track it down and get me out, I'd really appreciate it. See you soon!
-
-Your pal,
-Bob"
-
-[node name="Area2D" type="Area2D" parent="Letter" unique_id=239850484]
-texture_filter = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Letter/Area2D" unique_id=2047340451]
-position = Vector2(0, -5.333313)
-shape = SubResource("RectangleShape2D_dgfsc")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Letter" unique_id=466499277]
-
-[node name="Dialogue" type="PanelContainer" parent="Letter/CanvasLayer" unique_id=2042026138]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Letter/CanvasLayer/Dialogue" unique_id=457430211]
-layout_mode = 2
-
-[node name="Text" type="Label" parent="Letter/CanvasLayer/Dialogue/VBoxContainer" unique_id=902267867]
-layout_mode = 2
-
-[node name="Continue" type="Button" parent="Letter/CanvasLayer/Dialogue/VBoxContainer" unique_id=1287468296]
-layout_mode = 2
 
 [editable path="Player"]
 [editable path="DeathTrigger"]

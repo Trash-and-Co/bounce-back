@@ -10,8 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="4_w4rtc"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="5_w5pkf"]
 [ext_resource type="PackedScene" uid="uid://is5nhsfmoxgb" path="res://ui/fadeToBlack.tscn" id="6_w5pkf"]
+[ext_resource type="Texture2D" uid="uid://dn8eex5txypm4" path="res://assets/items/map.png" id="11_wfvow"]
+[ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="12_o57h5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mg2o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o57h5"]
+atlas = ExtResource("11_wfvow")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ja61k"]
+radius = 12.0
 
 [node name="Stage1Tutorial" type="Node2D" unique_id=524240727]
 position = Vector2(-406, 228)
@@ -23,14 +32,15 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_3mg2o")
 script = ExtResource("2_22r5b")
 letter_font = ExtResource("3_x3r4t")
-message = "Hey buddy! 
+message = "Hey buddy!
 
-Looks like I got myself into a bit of a jam. I'm currently locked up just past the grass plateaus, and to make matters worse, they took the key and hid it deep inside the Castle of Despair. 
+Looks like I got myself into a bit of a jam. I'm trapped somewhere beyond the Grass Plateaus, and I could really use your help.
 
-If you could track it down and get me out, I'd really appreciate it. See you soon!
+My map got ripped in half, and both pieces are scattered across the Grass Plateaus. Find them both and you'll have the route to the Castle of Despair, where they've hidden the key to my cage.
 
 Your pal,
-Bob"
+Bob
+"
 
 [node name="Area2D" type="Area2D" parent="Letter" unique_id=1329990600]
 texture_filter = 1
@@ -58,7 +68,7 @@ tile_map_data = PackedByteArray("AAAAAAkAAAAEAAMAAAAAAAgAAAAMAAMAAAAAAAcAAAAEAAM
 tile_set = ExtResource("1_7ak82")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_k2svq")]
-position = Vector2(367, 357)
+position = Vector2(354, 223)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
 position = Vector2(-5.222233, 3.999999)
@@ -82,6 +92,20 @@ position = Vector2(4, 4)
 scale = Vector2(20.4, 1)
 
 [node name="FadeToBlack" parent="." unique_id=364107224 instance=ExtResource("6_w5pkf")]
+
+[node name="Map 1_2" type="Sprite2D" parent="." unique_id=1057039017]
+texture_filter = 1
+position = Vector2(3950.9998, -1527)
+scale = Vector2(3.5, 3.5)
+texture = SubResource("AtlasTexture_o57h5")
+script = ExtResource("12_o57h5")
+key_id = &"map_piece_1"
+next_scene = "uid://dlg38dtlgitl0"
+
+[node name="Area2D" type="Area2D" parent="Map 1_2" unique_id=137743780]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map 1_2/Area2D" unique_id=836681549]
+shape = SubResource("CircleShape2D_ja61k")
 
 [editable path="Player"]
 [editable path="DeathTrigger"]
