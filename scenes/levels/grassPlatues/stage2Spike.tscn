@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="6_a0gcg"]
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="7_hxciw"]
 [ext_resource type="Texture2D" uid="uid://dn8eex5txypm4" path="res://assets/items/map.png" id="8_jugfk"]
-[ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="9_fvu07"]
 [ext_resource type="PackedScene" uid="uid://ceyvhru8us3lt" path="res://objects/textSign/textSign.tscn" id="8_k0rqn"]
 [ext_resource type="AudioStream" uid="uid://bvs28kfuht74m" path="res://assets/sounds/music/haven_bg2.ogg" id="9_jugfk"]
+
+[ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="9_fvu07"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2ftc"]
 atlas = ExtResource("8_jugfk")
@@ -26,7 +27,7 @@ tile_map_data = PackedByteArray("AAAZAA8AAAAIAAMAAAAZAA4AAAAMAAMAAAAZAA0AAAABAAM
 tile_set = ExtResource("1_srwtk")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_rh8md")]
-position = Vector2(5086, 599)
+position = Vector2(640, 800)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
 position = Vector2(-5.222229, 5)
@@ -168,7 +169,11 @@ shape = SubResource("CircleShape2D_hwfqr")
 
 [node name="TextSign" parent="." unique_id=1447238726 instance=ExtResource("8_k0rqn")]
 position = Vector2(1000, 800)
-sign_text = "Hello this is sign text."
+sign_text = "Watch out from spikes!"
+
+[node name="TextSign2" parent="." unique_id=1443952868 instance=ExtResource("8_k0rqn")]
+position = Vector2(3776, 2656)
+sign_text = "Try jumping on the wall"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=286582449]
 stream = ExtResource("9_jugfk")

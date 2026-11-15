@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="10_ki6u1"]
 [ext_resource type="AudioStream" uid="uid://bvs28kfuht74m" path="res://assets/sounds/music/haven_bg2.ogg" id="11_ki6u1"]
 
-
+[ext_resource type="PackedScene" uid="uid://ceyvhru8us3lt" path="res://objects/textSign/textSign.tscn" id="11_samietis_sign"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i2se7"]
 radius = 12.0
@@ -115,6 +115,10 @@ stream = ExtResource("11_ki6u1")
 volume_db = -10.013
 autoplay = true
 parameters/looping = true
+
+[node name="TextSign" parent="." unique_id=1447238726 instance=ExtResource("11_samietis_sign")]
+position = Vector2(1120, 672)
+sign_text = "There will be switches here"
 
 [editable path="Player"]
 [editable path="DeathTrigger"]

@@ -15,8 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://jnrls0l2c7j" path="res://assets/sounds/music/haven_bg3.ogg" id="10_t6i05"]
 [ext_resource type="PackedScene" uid="uid://ds54xbndfnvl6" path="res://objects/stage_exit/stageExit.tscn" id="11_nt01p"]
 
-
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2dnw"]
 size = Vector2(14, 71.666626)
 
