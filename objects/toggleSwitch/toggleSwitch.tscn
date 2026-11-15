@@ -15,18 +15,17 @@ region = Rect2(256, 48, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fibik"]
 size = Vector2(45, 34)
 
-[node name="TextureButton" type="TextureButton" unique_id=100113984 node_paths=PackedStringArray("target_label")]
+[node name="TextureButton" type="TextureButton" unique_id=100113984]
 texture_filter = 1
-offset_left = 448.0
-offset_top = 440.0
-offset_right = 508.0
-offset_bottom = 500.0
+offset_left = -32.0
+offset_top = -59.0
+offset_right = 28.0
+offset_bottom = 1.0
 toggle_mode = true
 texture_normal = SubResource("AtlasTexture_2pnug")
 texture_pressed = SubResource("AtlasTexture_xywpq")
 stretch_mode = 0
 script = ExtResource("2_uersy")
-target_label = NodePath("")
 
 [node name="ToggleSound" type="AudioStreamPlayer" parent="." unique_id=962053696]
 stream = ExtResource("3_h3wyk")
@@ -34,5 +33,5 @@ stream = ExtResource("3_h3wyk")
 [node name="TouchArea" type="Area2D" parent="." unique_id=188059086]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TouchArea" unique_id=1820270931]
-position = Vector2(30.5, 43)
+position = Vector2(32, 40)
 shape = SubResource("RectangleShape2D_fibik")
