@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://djeprtg5flydd" path="res://assets/items/08.png" id="11_1qxg6"]
 [ext_resource type="Script" uid="uid://cyh4h3ptm0r3b" path="res://ui/letter.gd" id="12_thae6"]
 [ext_resource type="FontFile" uid="uid://4fox4h7hggqn" path="res://assets/fonts/Pixel Intv.otf" id="13_ox0mb"]
+[ext_resource type="AudioStream" uid="uid://jnrls0l2c7j" path="res://assets/sounds/music/haven_bg3.ogg" id="11_1tg8c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o13uq"]
 
@@ -296,6 +297,12 @@ layout_mode = 2
 
 [node name="Continue" type="Button" parent="Letter/CanvasLayer/Dialogue/VBoxContainer" unique_id=1529380146]
 layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1538715984]
+stream = ExtResource("11_1tg8c")
+volume_db = -10.013
+autoplay = true
+parameters/looping = true
 
 [editable path="Player"]
 [editable path="DeathTrigger"]

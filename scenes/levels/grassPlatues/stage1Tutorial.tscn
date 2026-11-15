@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dn8eex5txypm4" path="res://assets/items/map.png" id="11_wfvow"]
 [ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="12_o57h5"]
 [ext_resource type="PackedScene" uid="uid://ceyvhru8us3lt" path="res://objects/textSign/textSign.tscn" id="7_jkjw4"]
+[ext_resource type="AudioStream" uid="uid://bvs28kfuht74m" path="res://assets/sounds/music/haven_bg2.ogg" id="11_8ux1n"]
 
 
 
@@ -124,6 +125,12 @@ next_scene = "uid://dlg38dtlgitl0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map 1_2/Area2D" unique_id=836681549]
 shape = SubResource("CircleShape2D_ja61k")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=534743243]
+stream = ExtResource("11_8ux1n")
+volume_db = -10.013
+autoplay = true
+parameters/looping = true
 
 [editable path="Player"]
 [editable path="DeathTrigger"]

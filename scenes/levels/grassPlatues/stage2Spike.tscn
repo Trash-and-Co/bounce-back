@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dn8eex5txypm4" path="res://assets/items/map.png" id="8_jugfk"]
 [ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="9_fvu07"]
 [ext_resource type="PackedScene" uid="uid://ceyvhru8us3lt" path="res://objects/textSign/textSign.tscn" id="8_k0rqn"]
+[ext_resource type="AudioStream" uid="uid://bvs28kfuht74m" path="res://assets/sounds/music/haven_bg2.ogg" id="9_jugfk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2ftc"]
 atlas = ExtResource("8_jugfk")
@@ -168,5 +169,11 @@ shape = SubResource("CircleShape2D_hwfqr")
 [node name="TextSign" parent="." unique_id=1447238726 instance=ExtResource("8_k0rqn")]
 position = Vector2(1000, 800)
 sign_text = "Hello this is sign text."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=286582449]
+stream = ExtResource("9_jugfk")
+volume_db = -10.013
+autoplay = true
+parameters/looping = true
 
 [editable path="Player"]

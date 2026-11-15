@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://4fox4h7hggqn" path="res://assets/fonts/Pixel Intv.otf" id="11_6cs85"]
 [ext_resource type="Texture2D" uid="uid://ca01o7kln5h71" path="res://assets/signs/sign with no pole.png" id="12_6cs85"]
 [ext_resource type="Script" uid="uid://dx2wjjlw4vxq4" path="res://objects/collectible/collectible.gd" id="13_uk617"]
+[ext_resource type="AudioStream" uid="uid://bvs28kfuht74m" path="res://assets/sounds/music/haven_bg2.ogg" id="9_6rtch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uk617"]
 
@@ -172,6 +173,12 @@ next_scene = "uid://6ghs2o6jyegm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="direction arrow/Area2D" unique_id=156887346]
 shape = SubResource("CircleShape2D_m16yo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=829235526]
+stream = ExtResource("9_6rtch")
+volume_db = -10.013
+autoplay = true
+parameters/looping = true
 
 [editable path="Player"]
 [editable path="DeathTrigger2"]

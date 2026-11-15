@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://qqc4pjenxwna" path="res://assets/SlimePlatformerAssets/SlimeWallStuck/wallStick2.png" id="7_8t03j"]
 [ext_resource type="Texture2D" uid="uid://dcm2dsjpoh2mw" path="res://assets/SlimePlatformerAssets/SlimeWallStuck/wallStick3.png" id="8_2ieo8"]
 [ext_resource type="Texture2D" uid="uid://cqt46aj1xvl4n" path="res://assets/SlimePlatformerAssets/SlimeWallStuck/wallStick4.png" id="9_ebec5"]
+[ext_resource type="AudioStream" uid="uid://co3nkk4f336gl" path="res://player/Jump 58.wav" id="10_2ieo8"]
+[ext_resource type="AudioStream" uid="uid://bvqw35g6em4y0" path="res://player/floraphonic-slime-splatter-8-220266.mp3" id="11_ebec5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgfsc"]
 size = Vector2(56, 40)
@@ -69,3 +71,10 @@ animation = &"idle"
 z_index = -10
 position = Vector2(1, 3)
 scale = Vector2(3.6, 3.6)
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="." unique_id=1797831678]
+stream = ExtResource("10_2ieo8")
+volume_db = -3.467
+
+[node name="DropSFX" type="AudioStreamPlayer2D" parent="." unique_id=311612678]
+stream = ExtResource("11_ebec5")
