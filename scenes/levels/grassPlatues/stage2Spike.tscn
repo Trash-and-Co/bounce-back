@@ -15,7 +15,7 @@ tile_map_data = PackedByteArray("AAAZAA8AAAAIAAMAAAAZAA4AAAAMAAMAAAAZAA0AAAABAAM
 tile_set = ExtResource("1_srwtk")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_rh8md")]
-position = Vector2(640, 800)
+position = Vector2(857, 553)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
 position = Vector2(-5.222229, 5)
