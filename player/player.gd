@@ -48,8 +48,8 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and dragging:
-		var mouse: Vector2 = get_canvas_transform().affine_inverse() * event.position
-		pullback_started = pullback_started or drag_start.distance_to(mouse) > DRAG_DEAD_ZONE
+		var motion_position: Vector2 = get_canvas_transform().affine_inverse() * event.position
+		pullback_started = pullback_started or drag_start.distance_to(motion_position) > DRAG_DEAD_ZONE
 		return
 
 	if not event is InputEventMouseButton or event.button_index != MOUSE_BUTTON_LEFT:
