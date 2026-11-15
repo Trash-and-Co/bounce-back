@@ -57,7 +57,7 @@ func _play_impact(player: CharacterBody2D, level: Node) -> void:
 	if not is_instance_valid(player) or get_tree().current_scene != level:
 		return
 
-	if occupied >= MAX_OCCUPIED_SPIKES or not is_instance_valid(checkpoint):
+	if occupied + 1 >= MAX_OCCUPIED_SPIKES or not is_instance_valid(checkpoint):
 		level.set_meta("restart_pending", true)
 		get_tree().reload_current_scene()
 		return
