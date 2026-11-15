@@ -22,7 +22,7 @@ tile_map_data = PackedByteArray("AAAXAAoAAAAIAAAAAAAXAAkAAAAFAAAAAAAXAAgAAAACAAA
 tile_set = ExtResource("1_s4jsk")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_6tc1s")]
-position = Vector2(6016, 2816)
+position = Vector2(578, 313)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
 position = Vector2(11.66626, -4.5)
@@ -269,7 +269,7 @@ rotation = 1.5707964
 
 [node name="Letter" type="Sprite2D" parent="." unique_id=454720088]
 texture_filter = 1
-position = Vector2(6316, 2802)
+position = Vector2(6327.0005, 2802)
 scale = Vector2(3, 3)
 texture = ExtResource("9_nt01p")
 script = ExtResource("10_hyjvm")

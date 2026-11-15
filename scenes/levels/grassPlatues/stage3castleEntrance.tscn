@@ -21,7 +21,7 @@ tile_map_data = PackedByteArray("AAAKAAsAAAABAAMAAAALAAsAAAABAAMAAAALAAwAAAAMAAM
 tile_set = ExtResource("1_efood")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_vy105")]
-position = Vector2(576, 320)
+position = Vector2(563, 328)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
 position = Vector2(-5.222229, 5)
