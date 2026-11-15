@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var bullet_scene: PackedScene
+@export var starts_enabled: bool = true
 
 @onready var muzzle: Marker2D = $Muzzle
 @onready var shoot_timer: Timer = $ShootTimer
@@ -12,9 +13,12 @@ func _ready() -> void:
 	if shoot_timer == null:
 		return
 
+	shoot_timer.stop()
 	shoot_timer.timeout.connect(_shoot)
 	shoot_timer.one_shot = false
-	shoot_timer.start(2.0)
+
+	if starts_enabled:
+		shoot_timer.start(2.0)
 
 func _shoot() -> void:
 
