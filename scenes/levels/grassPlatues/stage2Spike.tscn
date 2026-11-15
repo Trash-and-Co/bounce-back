@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="5_a0gcg"]
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="6_a0gcg"]
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="7_hxciw"]
+[ext_resource type="PackedScene" uid="uid://ceyvhru8us3lt" path="res://objects/textSign/textSign.tscn" id="8_k0rqn"]
 
 [node name="Stage2Spike" type="Node2D" unique_id=965111673]
 
@@ -140,5 +141,9 @@ position = Vector2(2432, 2080)
 
 [node name="Spike9" parent="." unique_id=391221291 instance=ExtResource("6_a0gcg")]
 position = Vector2(4640, 2656)
+
+[node name="TextSign" parent="." unique_id=1447238726 instance=ExtResource("8_k0rqn")]
+position = Vector2(1000, 800)
+sign_text = "Hello this is sign text."
 
 [editable path="Player"]
