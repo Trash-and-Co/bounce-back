@@ -10,7 +10,7 @@ bullet_scene = ExtResource("2_1g2i6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=316046647]
 texture_filter = 1
-position = Vector2(34, 472)
+position = Vector2(3.8146973e-06, 3.0517578e-05)
 scale = Vector2(1.75, 1.75)
 texture = ExtResource("3_s02et")
 
@@ -18,4 +18,4 @@ texture = ExtResource("3_s02et")
 wait_time = 3.0
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1124606796]
-position = Vector2(64, 472)
+position = Vector2(32, 0)
