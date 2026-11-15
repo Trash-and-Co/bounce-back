@@ -1,6 +1,5 @@
 extends TextureButton
 
-@export var target_label: Label
 @export var platform_layer: TileMapLayer
 
 
@@ -13,7 +12,6 @@ func _ready() -> void:
 	shortcut = null
 
 	$TouchArea.body_entered.connect(_on_body_entered)
-	_update_text()
 	_update_platform()
 
 
@@ -26,13 +24,7 @@ func _on_body_entered(body: Node2D) -> void:
 	$ToggleSound.pitch_scale = randf_range(0.9, 1.1)
 	$ToggleSound.play()
 
-	_update_text()
 	_update_platform()
-
-
-func _update_text() -> void:
-	if target_label:
-		target_label.text = "Switch: ON" if button_pressed else "Switch: OFF"
 
 
 func _update_platform() -> void:
