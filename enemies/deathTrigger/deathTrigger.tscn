@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://j8h0x4k13qop"]
+
+[ext_resource type="Script" uid="uid://b25l7vhbnetdp" path="res://enemies/deathTrigger/death_trigger.gd" id="1_8jsm8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wf51"]
+
+[node name="DeathTrigger" type="Area2D" unique_id=310666320]
+script = ExtResource("1_8jsm8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1103659472]
+shape = SubResource("RectangleShape2D_5wf51")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

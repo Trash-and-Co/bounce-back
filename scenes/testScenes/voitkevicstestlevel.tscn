@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bh41eubssjdo1"]
+
+[ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="1_j75o6"]
+[ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="1_rxlsh"]
+[ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="2_b1ktf"]
+[ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="4_d157y"]
+[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://objects/hud/hud.gd" id="4_mhaos"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
+size = Vector2(1000, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwv3a"]
+size = Vector2(40, 300)
+
+[node name="main" type="Node2D" unique_id=599523800]
+position = Vector2(-178, -283)
+
+[node name="Checkpoint" parent="." unique_id=2017083346 instance=ExtResource("1_j75o6")]
+position = Vector2(200, 200)
+
+[node name="Player" parent="." unique_id=2115439458 instance=ExtResource("1_rxlsh")]
+position = Vector2(255, 243)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1727189459]
+position = Vector2(500, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1151410034]
+shape = SubResource("RectangleShape2D_rkbax")
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=554687184]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=358026086]
+position = Vector2(650, 350)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1996096873]
+shape = SubResource("RectangleShape2D_jwv3a")
+
+[node name="ColorRect" type="ColorRect" parent="Wall" unique_id=1070247468]
+offset_left = -20.0
+offset_top = -150.0
+offset_right = 20.0
+offset_bottom = 150.0
+color = Color(0.5410434, 0.8388975, 2.3102762e-06, 1)
+
+[node name="Spike" parent="." unique_id=1282762288 instance=ExtResource("2_b1ktf")]
+position = Vector2(488, 465)
+
+[node name="Spike2" parent="." unique_id=1376267757 instance=ExtResource("2_b1ktf")]
+position = Vector2(357, 467)
+
+[node name="Spike3" parent="." unique_id=680104470 instance=ExtResource("2_b1ktf")]
+position = Vector2(424, 466)
+
+[node name="Spike4" parent="." unique_id=1136066952 instance=ExtResource("2_b1ktf")]
+position = Vector2(166, 461)
+
+[node name="Spike5" parent="." unique_id=1407222684 instance=ExtResource("2_b1ktf")]
+position = Vector2(102, 462)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1151238341]
+script = ExtResource("4_mhaos")
+
+[node name="Lives" type="HBoxContainer" parent="HUD" unique_id=1926319183]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Live1" type="TextureRect" parent="HUD/Lives" unique_id=2048388323]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_d157y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Live2" type="TextureRect" parent="HUD/Lives" unique_id=301801236]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_d157y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Live3" type="TextureRect" parent="HUD/Lives" unique_id=681667921]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_d157y")
+expand_mode = 1
+stretch_mode = 5

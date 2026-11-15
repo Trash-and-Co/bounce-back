@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://is5nhsfmoxgb"]
+
+[ext_resource type="Script" uid="uid://c2m1b5fqckwq7" path="res://ui/fade_to_black.gd" id="1_fbxgg"]
+
+[node name="FadeToBlack" type="CanvasLayer" unique_id=1445862696]
+script = ExtResource("1_fbxgg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1482062907]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(29.131763, 16.479282)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

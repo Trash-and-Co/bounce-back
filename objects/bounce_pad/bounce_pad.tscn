@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b1jpf8jfrjjs6"]
+
+[ext_resource type="Texture2D" uid="uid://jnosyh2y8iqh" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle2.png" id="1_os7hj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pad"]
+size = Vector2(70, 8)
+
+[node name="BouncePad" type="StaticBody2D" unique_id=1429948204 groups=["bounce_pad"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=834861250]
+texture_filter = 1
+position = Vector2(0, -14)
+scale = Vector2(5, 2)
+texture = ExtResource("1_os7hj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=251059931]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_pad")
