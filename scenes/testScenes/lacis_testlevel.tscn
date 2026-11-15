@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="2_ujw72"]
 [ext_resource type="PackedScene" uid="uid://cgomkkkcqaqpk" path="res://objects/toggleSwitch/toggleSwitch.tscn" id="3_eyqsw"]
 [ext_resource type="TileSet" uid="uid://j66fp0lh4fda" path="res://assets/tilesets/tile_set.tres" id="4_xywpq"]
+[ext_resource type="PackedScene" uid="uid://dl7kqpfvinyc8" path="res://enemies/cannon/cannon.tscn" id="5_vslsn"]
+[ext_resource type="PackedScene" uid="uid://8805jv1nafkm" path="res://enemies/bullet & particle/bullet.tscn" id="6_vslsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(1000, 40)
@@ -60,5 +62,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1974015376]
-tile_map_data = PackedByteArray(0, 0, 5, 0, 4, 0, 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 4, 0, 0, 0, 10, 0, 3, 0, 0, 0, 7, 0, 4, 0, 0, 0, 11, 0, 3, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 3, 0, 7, 0, 0, 0, 9, 0, 3, 0, 0, 0, 4, 0, 7, 0, 0, 0, 10, 0, 3, 0, 0, 0, 5, 0, 7, 0, 0, 0, 11, 0, 3, 0, 0, 0)
 tile_set = ExtResource("4_xywpq")
+
+[node name="Cannon" parent="." unique_id=2061064850 instance=ExtResource("5_vslsn")]
+
+[node name="Bullet" parent="." unique_id=382168765 instance=ExtResource("6_vslsn")]
+position = Vector2(72, 504)

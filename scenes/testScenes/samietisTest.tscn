@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="2_ueh0w"]
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="3_ueh0w"]
 [ext_resource type="TileSet" uid="uid://cwn3ov7kap0wt" path="res://assets/tilesets/platform_level1.tres" id="4_slifb"]
+[ext_resource type="PackedScene" uid="uid://cgomkkkcqaqpk" path="res://objects/toggleSwitch/toggleSwitch.tscn" id="5_14nt2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ueh0w"]
 size = Vector2(1000, 40)
@@ -38,3 +39,10 @@ tile_set = ExtResource("4_slifb")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1209265449]
 tile_set = ExtResource("4_slifb")
+
+[node name="TextureButton" parent="." unique_id=100113984 node_paths=PackedStringArray("platform_layer") instance=ExtResource("5_14nt2")]
+offset_left = 86.0
+offset_top = 469.0
+offset_right = 146.0
+offset_bottom = 529.0
+platform_layer = NodePath("../TileMapLayer")
