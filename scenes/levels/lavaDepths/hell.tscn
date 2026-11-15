@@ -3,13 +3,18 @@
 [ext_resource type="TileSet" uid="uid://dm6tw6msia23m" path="res://assets/tilesets/tilesMain.tres" id="1_2tag2"]
 [ext_resource type="PackedScene" uid="uid://dc5w5nvp1r8mx" path="res://player/player.tscn" id="2_y4qqs"]
 [ext_resource type="Texture2D" uid="uid://bgiqdsk8hoahm" path="res://assets/SlimePlatformerAssets/Backgrounds/04_pyreheart.png" id="3_xh3kv"]
-[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://objects/hud/hud.gd" id="4_6tbew"]
+[ext_resource type="Script" uid="uid://d1ad5miwgot7f" path="res://ui/hud/hud.gd" id="4_6tbew"]
 [ext_resource type="Texture2D" uid="uid://3bw2ykdm8cj7" path="res://assets/SlimePlatformerAssets/SlimeIdle/slimeIdle1.png" id="5_xh3kv"]
 [ext_resource type="PackedScene" uid="uid://cuhxkjcj3memu" path="res://objects/checkpoint/checkpoint.tscn" id="6_1tg8c"]
 [ext_resource type="PackedScene" uid="uid://cgomkkkcqaqpk" path="res://objects/toggleSwitch/toggleSwitch.tscn" id="7_gtr4s"]
 [ext_resource type="PackedScene" uid="uid://dl7kqpfvinyc8" path="res://enemies/cannon/cannon.tscn" id="8_6tbew"]
 [ext_resource type="PackedScene" uid="uid://j8h0x4k13qop" path="res://enemies/deathTrigger/deathTrigger.tscn" id="9_xh3kv"]
 [ext_resource type="PackedScene" uid="uid://c7h32g5xrtmlf" path="res://enemies/spike/spike.tscn" id="10_1tg8c"]
+[ext_resource type="Texture2D" uid="uid://djeprtg5flydd" path="res://assets/items/08.png" id="11_1qxg6"]
+[ext_resource type="Script" uid="uid://cyh4h3ptm0r3b" path="res://ui/letter.gd" id="12_thae6"]
+[ext_resource type="FontFile" uid="uid://4fox4h7hggqn" path="res://assets/fonts/Pixel Intv.otf" id="13_ox0mb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o13uq"]
 
 [node name="Stage2Spike" type="Node2D" unique_id=965111673]
 
@@ -18,7 +23,7 @@ tile_map_data = PackedByteArray("AAAKAAcAAAAEAAEAAAAKAAYAAAABAAEAAAAJAAcAAAAEAAE
 tile_set = ExtResource("1_2tag2")
 
 [node name="Player" parent="." unique_id=2115439458 instance=ExtResource("2_y4qqs")]
-position = Vector2(512, -416)
+position = Vector2(536, -613)
 
 [node name="Background" parent="Player/Camera2D" parent_id_path=PackedInt32Array(2115439458, 1896346191) index="0" unique_id=417367645]
 position = Vector2(-5.222229, 5)
@@ -252,6 +257,45 @@ position = Vector2(1632, 1568)
 
 [node name="Spike23" parent="." unique_id=281615138 instance=ExtResource("10_1tg8c")]
 position = Vector2(1184, 1568)
+
+[node name="Letter" type="Sprite2D" parent="." unique_id=1571400648]
+texture_filter = 1
+position = Vector2(9821, 4096)
+scale = Vector2(3, 3)
+texture = ExtResource("11_1qxg6")
+script = ExtResource("12_thae6")
+letter_font = ExtResource("13_ox0mb")
+message = "Hey buddy!
+
+You did it! Thank you for freeing me! I was starting to think I'll melt!
+
+You came all this way just to help me. I owe you one.
+
+Your pal,
+Bob"
+next_scene = "uid://b5enshmjekrmf"
+close_text = "No problem!"
+
+[node name="Area2D" type="Area2D" parent="Letter" unique_id=839585335]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Letter/Area2D" unique_id=589998546]
+shape = SubResource("CircleShape2D_o13uq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Letter" unique_id=1817265647]
+
+[node name="Dialogue" type="PanelContainer" parent="Letter/CanvasLayer" unique_id=700491051]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Letter/CanvasLayer/Dialogue" unique_id=2009928812]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="Letter/CanvasLayer/Dialogue/VBoxContainer" unique_id=2052288731]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="Letter/CanvasLayer/Dialogue/VBoxContainer" unique_id=1529380146]
+layout_mode = 2
 
 [editable path="Player"]
 [editable path="DeathTrigger"]
