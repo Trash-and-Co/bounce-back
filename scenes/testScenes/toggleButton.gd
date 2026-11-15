@@ -1,11 +1,11 @@
 extends TextureButton
 
 @export var platform_layer: TileMapLayer
-
+@export var starts_on: bool = false
 
 func _ready() -> void:
 	toggle_mode = true
-	set_pressed_no_signal(false)
+	set_pressed_no_signal(starts_on)
 
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	focus_mode = Control.FOCUS_NONE

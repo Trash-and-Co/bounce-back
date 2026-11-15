@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://dl7kqpfvinyc8"]
 
 [ext_resource type="Script" uid="uid://de4o4vgweco6" path="res://enemies/cannon/cannon.gd" id="1_aqcg8"]
-[ext_resource type="PackedScene" uid="uid://8805jv1nafkm" path="res://enemies/bullet & particle/bullet.tscn" id="2_1g2i6"]
 [ext_resource type="Texture2D" uid="uid://cnixi22a852tw" path="res://assets/sprites/canon.png" id="3_s02et"]
 
-[node name="Cannon" type="Node2D" unique_id=2061064850]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpovd"]
+size = Vector2(56, 8.5)
+
+[node name="Cannon" type="StaticBody2D" unique_id=728143656]
 script = ExtResource("1_aqcg8")
-bullet_scene = ExtResource("2_1g2i6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=316046647]
 texture_filter = 1
@@ -18,4 +19,17 @@ texture = ExtResource("3_s02et")
 wait_time = 3.0
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=1124606796]
-position = Vector2(32, 0)
+position = Vector2(35, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=660452359]
+position = Vector2(-6, -24)
+shape = SubResource("RectangleShape2D_vpovd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1507240462]
+position = Vector2(-6, 24)
+shape = SubResource("RectangleShape2D_vpovd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=56936983]
+position = Vector2(-30, 0)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_vpovd")

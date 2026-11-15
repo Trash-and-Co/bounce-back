@@ -8,18 +8,27 @@ var age: float = 0.0
 
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	print("Bullet spawned: ", get_script().resource_path)
+
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 
 
 func _physics_process(delta: float) -> void:
-	age += delta
+	global_position += direction.normalized() * speed * delta
 
+	age += delta
 	if age >= lifetime:
 		queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if is_queued_for_deletion():
 		return
 
-	global_position += direction * speed * delta
+	print("Bullet hit: ", body.name, " (", body.get_class(), ")")
 
+	if body is CharacterBody2D and body.is_in_group("player") and body.has_method("take_damage"):
+		body.call("take_damage")
 
-func _on_body_entered(_body: Node2D) -> void:
 	queue_free()
