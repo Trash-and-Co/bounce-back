@@ -76,7 +76,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Checkpoint" parent="." unique_id=2017083346 instance=ExtResource("6_afce4")]
-position = Vector2(368, 368)
+position = Vector2(1920, 480)
 
 [node name="TextureButton" parent="." unique_id=100113984 node_paths=PackedStringArray("platform_layer") instance=ExtResource("7_1wi1p")]
 offset_left = 2336.0
